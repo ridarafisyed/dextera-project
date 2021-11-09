@@ -26,11 +26,15 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <Fragment>
             <Button component={Link} color="inherit" to='/login'>Login </Button>
             <Button  component={Link} color="inherit"to='/signup'>Sign Up</Button>
+            <Button component={Link} color="inherit" to='/dashboard'>Dashboard </Button>
         </Fragment>
     );
 
     const authLinks = () => (
+        <Fragment>
             <Button component={Link} color="inherit" href='#!' onClick={logout_user}>Logout</Button>
+            <Button component={Link} color="inherit" to='/dashboard'>Dashboard </Button>
+        </Fragment>
         
     );
     return (

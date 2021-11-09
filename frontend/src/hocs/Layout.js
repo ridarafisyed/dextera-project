@@ -3,22 +3,19 @@ import Navbar from '../components/Navbar';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from '../actions/auth';
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme();
-
-
+import { ThemeProvider } from '@mui/material/styles';
+import { Grid } from '@mui/material';
+import theme from './Theme'
 const Layout = ({ checkAuthenticated, load_user, children }) => {
 
     return (
         <ThemeProvider theme={theme}>
-            
-                <Navbar />
-                <div >
+            <Grid contianer rowSpacing={5} columnSpacing={5}>
+                <Grid item> <Navbar /></Grid>          
+                <Grid >
                     {children}
-                </div>
-                
-            
+                </Grid>  
+            </Grid>
         </ThemeProvider>
     );
 };
