@@ -15,7 +15,7 @@ import store from './store';
 
 import Layout from './hocs/Layout';
 
-import './App.css'
+// import './App.css'
 
 const App = () => (
     <Provider store={store} >

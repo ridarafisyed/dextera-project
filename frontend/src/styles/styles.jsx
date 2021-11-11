@@ -12,7 +12,7 @@ import {Button, Typography} from '@mui/material/';
 //     padding: '0 30px',
 //   });
 
-export const SideBar_btn = styled(Button)({
+export const SideBarBtn = styled(Button)({
   fontSize: '0.6em',
   textTransform:'none',
   textAlign:'center',
