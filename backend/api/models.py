@@ -1,30 +1,20 @@
 from django.db import models
 from django.utils import timezone
-# from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
 # Create your models here.
 
-# when user register these field must be store
 
-# class User(models.Model):
-#     f_name = models.CharField(max_length=80)
-#     l_name = models.CharField(max_length=80)
-#     m_name = models.CharField(max_length=80)
-#     company = models.CharField(max_length=80, default="")
-#     uname = models.CharField(max_length=80, unique=True)
-#     pword = models.CharField(max_length=80) #should be encrypt 
-#     created_at = models.DateTimeField(auto_now_add = True)
 # when a user register the profile will build with default values and user_id
 # user can edit their profile later.
-#  user profile 
+# user profile 
 class Profile (models.Model):
     # p_id = models.IntegerField()[pk, increment]
-    f_name = models.CharField(max_length=80)
-    l_name = models.CharField(max_length=80)
-    m_name = models.CharField(max_length=80)
-    company = models.CharField(max_length=80, default="")
     user_id = models.IntegerField(default= 0)
+    f_name = models.CharField(max_length=80) # come with user model
+    l_name = models.CharField(max_length=80) # come with user model 
+    m_name = models.CharField(max_length=80) # edit in profile
+    company = models.CharField(max_length=80, default="")
     emp_pers_email = models.CharField(max_length=80, default="")
     emp_ssn = models.IntegerField(default= 0)
     user = models.IntegerField() # user model ref 

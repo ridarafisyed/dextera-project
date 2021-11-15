@@ -13,7 +13,12 @@ import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import { Provider } from 'react-redux';
 import store from './store';
 
+
 import Layout from './hocs/Layout';
+import PrivateRoutes from './utils/PrivateRoute';
+import Profile from './components/Profile/Profile';
+
+
 
 // import './App.css'
 
@@ -29,6 +34,7 @@ const App = () => (
                     <Route  path='/reset-password' component={ResetPassword} />
                     <Route  path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route  path='/activate/:uid/:token' component={Activate} />
+                    <Route  path='/profile' component={Profile}/>
                 </Switch>
             </Layout>
         </Router>

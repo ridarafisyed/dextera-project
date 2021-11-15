@@ -1,9 +1,9 @@
-
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
+// styling imports 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,8 +14,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import Logo from '../asserts/logo_white copy.png'
 
-const Navbar = ({ logout, isAuthenticated }) => {
+const Navbar = ({ logout, isAuthenticated, user }) => {
+    
+    console.log(user)
     const [redirect, setRedirect] = useState(false);
+ 
 
     const logout_user = () => {
         
@@ -27,12 +30,12 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <Fragment>
             <Button component={Link} color="inherit" to='/login'>Login </Button>
             <Button  component={Link} color="inherit"to='/signup'>Sign Up</Button>
-            <Button component={Link} color="inherit" to='/dashboard'>Dashboard </Button>
         </Fragment>
     );
 
     const authLinks = () => (
         <Fragment>
+            <Button component={Link} color="inherit" to="/profile">{user ? user.first_name : 'Guest'}</Button>
             <Button component={Link} color="inherit" href='#!' onClick={logout_user}>Logout</Button>
             <Button component={Link} color="inherit" to='/dashboard'>Dashboard </Button>
         </Fragment>
@@ -64,7 +67,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
   );
 }
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user:state.auth.user
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);
