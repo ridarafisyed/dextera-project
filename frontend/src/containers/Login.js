@@ -18,6 +18,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import BackgroundImage from '../asserts/login_light.png'
 
+
 const Login = ({ login, isAuthenticated }) => {
 
   const [formData, setFormData] = useState({
@@ -34,6 +35,25 @@ const Login = ({ login, isAuthenticated }) => {
 
       login(email, password);
   };
+//   const continueWithGoogle = async () => {
+//     try {
+//         const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
+
+//         window.location.replace(res.data.authorization_url);
+//     } catch (err) {
+
+//     }
+// };
+
+//   const continueWithFacebook = async () => {
+//       try {
+//           const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
+
+//           window.location.replace(res.data.authorization_url);
+//       } catch (err) {
+
+//       }
+//   };
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />
 }
@@ -71,6 +91,7 @@ const Login = ({ login, isAuthenticated }) => {
               Sign in
             </Typography>
                 <Box component="form" Validate sx={{ mt: 1 }} onSubmit={e => onSubmit(e)}>
+                 {/* csrf_token */}
                     <TextField
                         margin="normal"
                         required

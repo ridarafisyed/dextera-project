@@ -47,7 +47,8 @@ const Activate = ({ verify, match }) => {
             Verify your Account:     
             </Typography>
             
-            <Button component={Link} 
+            <Button 
+                        onClick={verify_account}
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }} to='/login' role='button'>
                     Verify
