@@ -55,6 +55,7 @@ const Login = ({ login, isAuthenticated }) => {
 //       }
 //   };
   if (isAuthenticated) {
+    
     return <Redirect to='/dashboard' />
 }
 
@@ -96,6 +97,7 @@ const Login = ({ login, isAuthenticated }) => {
                         margin="normal"
                         required
                         fullWidth
+                        variant="standard"
                         id="email"
                         label="Email Address"
                         name="email"
@@ -108,6 +110,7 @@ const Login = ({ login, isAuthenticated }) => {
                         margin="normal"
                         required
                         fullWidth
+                        variant="standard"
                         name="password"
                         label="Password"
                         type="password"
@@ -147,6 +150,7 @@ const Login = ({ login, isAuthenticated }) => {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
+  
 });
 
 export default connect(mapStateToProps, { login })(Login);

@@ -36,8 +36,9 @@ const Navbar = ({ logout, isAuthenticated, user }) => {
     const authLinks = () => (
         <Fragment>
             <Button component={Link} color="inherit" to="/profile">{user ? user.first_name : 'Guest'}</Button>
-            <Button component={Link} color="inherit" href='#!' onClick={logout_user}>Logout</Button>
             <Button component={Link} color="inherit" to='/dashboard'>Dashboard </Button>
+            <Button component={Link} color="inherit" href='#!' onClick={logout_user}>Logout</Button>
+            
         </Fragment>
         
     );

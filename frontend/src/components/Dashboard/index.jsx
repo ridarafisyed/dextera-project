@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
+
+import { connect } from 'react-redux';
 
 import { Typography,Box, Button,Paper, Grid} from '@mui/material';
 import { SideBarBtn, SideBarTitle } from '../../styles/styles'
@@ -7,16 +9,55 @@ import {BarChart, GroupAdd, KeyboardArrowDown, Task, MoneyOff, MonetizationOn, F
 import Calender from './Calender';
 import Tasks from './Tasks';
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
   
     const [revToggle, setRevToggle] = useState(true);
     const [empToggle, setEmpToggle] = useState(true);
+    
     
     const revHandler = e => {
         setRevToggle(!revToggle)
     }
     const empHandler = e => {
         setEmpToggle(!empToggle)
+    }
+    const adminControls = () =>{
+        <Fragment>
+            admin dashboard buttons
+        </Fragment>
+    }
+    const firmControls = () =>{
+        <Fragment>
+            firms dashbaord buttons
+        </Fragment>
+    }
+    const lawyerControls = () =>{
+        <Fragment>
+            lawyer dashbaord buttons
+        </Fragment>
+    }
+    const clientControls = () =>{
+        <Fragment>
+            client dashbaord buttons
+        </Fragment>
+    }
+    const flagChacker =() =>{
+        if(user.is_admin){
+            return adminControls()
+        }
+        else if(user.is_firm){
+            return firmControls()
+        }
+        else if(user.is_lawyer){
+            return lawyerControls()
+        }
+        else if(user.is_client){
+            return clientControls()
+        }
+        else {
+            return <p>Hello i am a regular user</p>
+        }
+        
     }
     return (
         <>
@@ -32,7 +73,7 @@ const Dashboard = () => {
             {revToggle? (
                 <Box>
                 <SideBarBtn variant="outlined">
-                <Grid>
+                    <Grid>
                         <Grid item><BarChart fontSize='medium'/></Grid>
                         <Grid item>Revenue In</Grid>
                     </Grid>
@@ -120,10 +161,17 @@ const Dashboard = () => {
               <Paper elevation={3} sx={{minHeight:'84vh'}}  >
                 <Calender/>
                 <Task/>
+               {user? flagChacker(): <p> no user exist </p>}
             </Paper>
           </Grid>
         </>
     )
 }
+const mapStateToProps = state => ({
+    // isAuthenticated: state.auth.isAuthenticated
+    user: state.auth.user
+    
+  });
+  
 
-export default Dashboard
+export default connect(mapStateToProps)(Dashboard)

@@ -68,6 +68,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_lawyer = models.BooleanField(default=False)
     is_client = models.BooleanField(default=False)
     
+    
 
     objects = UserAccountManager()
 

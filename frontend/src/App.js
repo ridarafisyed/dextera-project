@@ -28,12 +28,19 @@ const App = () => (
             <Layout>
                 <Switch>
                     <Route exact path='/' component={Home} />
+
+                    {/* loging regierter routes */}
                     <Route  path='/login' component={Login} />
                     <Route  path='/signup' component={Signup} />
-                    <Route  path="/dashboard" component={DashBoard}/>
+                    {/* authentication routes  */}
                     <Route  path='/reset-password' component={ResetPassword} />
                     <Route  path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route  path='/activate/:uid/:token' component={Activate} />
+                    {/* private route after login  */}
+                    {/* <PrivateRoutes  path="/dashboard" component={DashBoard}/>
+                    <PrivateRoutes  path='/profile' component={Profile}/> */}
+
+                    <Route  path="/dashboard" component={DashBoard}/>
                     <Route  path='/profile' component={Profile}/>
                 </Switch>
             </Layout>
