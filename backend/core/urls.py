@@ -1,7 +1,12 @@
 from django.urls import path, include, re_path
-from .views import ProfileDetailViewset, ProfileList
+from .views.profile import ProfileDetailViewset, ProfileList
 
 from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'profile', ProfileList, basename='profile')
+
+urlpatterns = router.urls
 
 
 
@@ -25,10 +30,7 @@ from rest_framework import routers
 
 
 
-router = routers.DefaultRouter()
-router.register(r'profile', ProfileList, basename='profile')
 
-urlpatterns = router.urls
 # urlpatterns = [
     
 #     # path('api', InvoiceView.as_view())

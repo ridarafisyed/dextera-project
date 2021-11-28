@@ -1,11 +1,11 @@
 # Create your views here.
-from .models import Profile
-from rest_framework import serializers, viewsets, permissions
+from ..models.profile import Profile
+from rest_framework import  viewsets, permissions
 from django.shortcuts import get_object_or_404
-from .serializers import ProfileDetailSerializer, ProfileSerializer
+from ..serializers.profile import ProfileDetailSerializer, ProfileSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import action
-from rest_framework import status
+
+
 
 
 class ProfileList(viewsets.ModelViewSet):
