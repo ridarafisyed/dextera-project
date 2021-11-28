@@ -29,42 +29,41 @@ import BackgroundImage from '../asserts/signup_light.png'
 const Signup = ({ signup, isAuthenticated }) => {
     const [accountCreated, setAccountCreated] = useState(false);
     const [isFirm, setIsFirm] = useState(false);
+       
     const [formData, setFormData] = useState({
+        username: '',
         first_name: '',
         last_name: '',
         email: '',
         password: '',
         re_password: '',
-        is_firm: Boolean,
-        is_client: Boolean,
+       
     });
     
-    const {email, first_name, last_name,  password, re_password, is_firm, is_client } = formData;
+    const {username, email, first_name, last_name,  password, re_password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     
     
     const onSubmit = e => {
-        e.preventDefault();
-        if (isFirm === true){
-          formData.is_firm = true
-          formData.is_client = false
-        }
-        else {
-          formData.is_firm = false
-          formData.is_client = true
-        }
-
+      let is_firm = isFirm
+      let is_client = !isFirm
+      
         if (password === re_password) {
 
-            signup(email, first_name, last_name,  password, re_password, is_firm, is_client);
+            signup( email, first_name, last_name, username,  password, re_password, is_firm, is_client);
+            
             setAccountCreated(true);
+        }
+        else {
+          console.log("Password no match, Please type again!")
         }
     };
 
     if (isAuthenticated) {
       return <Redirect to='/' />
   }
+  
   if (accountCreated) {
       return <Redirect to='/login' />
   }
@@ -104,6 +103,21 @@ const Signup = ({ signup, isAuthenticated }) => {
             </Typography>
                 <Box component="form" Validate sx={{ mt: 1 }}onSubmit={e => onSubmit(e)}>
                   <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                      <TextField
+                              margin="normal"
+                              required
+                              fullWidth
+                              variant="standard"
+                              id="username"
+                              label="Username"
+                              name="username"
+                              value={username}
+                              onChange={e => onChange(e)}
+                              autoComplete="username"
+                              autoFocus
+                          />
+                        </Grid>
                     <Grid item xs={12} sm={6}>
                       <TextField
                               margin="normal"
@@ -217,4 +231,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { signup })(Signup);
+export default connect(mapStateToProps, { signup})(Signup);

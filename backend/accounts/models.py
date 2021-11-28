@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from django.db.models.fields.related import RECURSIVE_RELATIONSHIP_CONSTANT
+
+from core.models import Profile
+
 
 # Create your models here.
 
@@ -18,35 +20,9 @@ class UserAccountManager(BaseUserManager):
 
         return user
 
-    # creating firm account 
-    def create_firm(self, email, password=None, **extra_fields):
-        user = self.create_user(email, password, **extra_fields)
-        
-        user.is_firm = True
-        user.save
-
-        return user
-
-    # creating lawyer account
-    def create_lawyer(self, email, password=None, **extra_fields):
-        user = self.create_user(email, password, **extra_fields)
-        
-        user.is_lawyer = True
-        user.save
-
-        return user
-    
-    # creating client account
-    def create_client(self, email, password=None, **extra_fields):
-        user = self.create_user(email, password, **extra_fields )
-        
-        user.is_client = True
-        user.save
-
-        return user
     # creating superuser account
-    def create_superuser(self, email, password=None, **extra_fields):
-        user = self.create_user(email, password, **extra_fields)
+    def create_superuser(self,  email, password=None, **extra_fields):
+        user = self.create_user( email, password, **extra_fields)
         
         user.is_superuser = True
         user.is_staff = True
@@ -55,10 +31,12 @@ class UserAccountManager(BaseUserManager):
         return user
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
+    
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    
+    username = models.CharField(max_length=255, unique=True)
+        
     # flags
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -68,12 +46,10 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_lawyer = models.BooleanField(default=False)
     is_client = models.BooleanField(default=False)
     
-    
-
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'username','is_firm','is_lawyer','is_client']
 
     def get_full_name(self):
         return self.first_name
@@ -83,3 +59,8 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     
     def __str__(self):
         return self.email
+    
+    def __str__(self): 
+        return self.username
+
+

@@ -3,21 +3,14 @@ import isWeekend from 'date-fns/isWeekend';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import StaticDatePicker from '@mui/lab/StaticDatePicker';
-import {TextField, Grid} from '@mui/material'
-import Task from './Task';
-
-import {useToggle} from '../../../context/useHooks'
+import {TextField, Box} from '@mui/material';
 
 const Calender = () => {
     const [value, setValue] = useState(new Date())
-    const [toggle, setToggle] = useToggle();
-
-    
+       
     return (
-        <Grid container>
-            {toggle ? 
-            (<Grid item>
-             <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <Box>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <StaticDatePicker
 
                     value={value}
@@ -28,12 +21,7 @@ const Calender = () => {
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
-            </Grid>): null
-            }
-            <Grid item p={3}>
-                <Task/>
-            </Grid>
-        </Grid>
+        </Box>
     )
 }
 

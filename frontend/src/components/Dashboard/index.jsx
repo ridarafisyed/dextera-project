@@ -1,177 +1,75 @@
-import React, { useState, Fragment } from 'react';
+/** @format */
+
+import React, { useState, useEffect, useContext, Fragment } from 'react';
+
+import { Button, Box, Grid, Paper } from '@mui/material';
+
+import {
+  TodayRounded,
+  TrendingUp,
+  KeyboardArrowDown,
+  Task,
+  MoneyOff,
+  MonetizationOn,
+  FileCopy,
+  HourglassBottom,
+  AssignmentTurnedIn,
+  Map,
+  AddCircle,
+  TodayOutlined,
+} from '@mui/icons-material';
+
+import { useToggle } from '../../context/useToggle';
+
+import { SideBarBtn } from '../../styles/styles';
+// import { UserContext } from '../../context/User';
 
 import { connect } from 'react-redux';
+import AdminDashboard from './AdminDashboard';
+import ClientDashboard from './ClientDashboard';
+import LawyerDashboard from './LawyerDashboard';
+import FirmDashboard from './FirmDashboard';
+import Profile from '../Profile/Profile';
+import Sidebar from '../Sidebar/Sidebar';
 
-import { Typography,Box, Button,Paper, Grid} from '@mui/material';
-import { SideBarBtn, SideBarTitle } from '../../styles/styles'
-import {BarChart, GroupAdd, KeyboardArrowDown, Task, MoneyOff, MonetizationOn, FileCopy, HourglassBottom, AssignmentTurnedIn, Map, AddCircle, Money} from '@mui/icons-material';
+// import DashboardNavbar from '../Navbars/DashboardNavbar';
 
-import Calender from './Calender';
-import Tasks from './Tasks';
-
-const Dashboard = ({user}) => {
-  
-    const [revToggle, setRevToggle] = useState(true);
-    const [empToggle, setEmpToggle] = useState(true);
-    
-    
-    const revHandler = e => {
-        setRevToggle(!revToggle)
-    }
-    const empHandler = e => {
-        setEmpToggle(!empToggle)
-    }
-    const adminControls = () =>{
-        <Fragment>
-            admin dashboard buttons
-        </Fragment>
-    }
-    const firmControls = () =>{
-        <Fragment>
-            firms dashbaord buttons
-        </Fragment>
-    }
-    const lawyerControls = () =>{
-        <Fragment>
-            lawyer dashbaord buttons
-        </Fragment>
-    }
-    const clientControls = () =>{
-        <Fragment>
-            client dashbaord buttons
-        </Fragment>
-    }
-    const flagChacker =() =>{
-        if(user.is_admin){
-            return adminControls()
-        }
-        else if(user.is_firm){
-            return firmControls()
-        }
-        else if(user.is_lawyer){
-            return lawyerControls()
-        }
-        else if(user.is_client){
-            return clientControls()
-        }
-        else {
-            return <p>Hello i am a regular user</p>
-        }
-        
-    }
-    return (
-        <>
-          <Grid item xs={2} >
-          <Paper elevation={3} sx={{minHeight:'84vh'}}>
-                <Button variant='text' fullWidth  
-                endIcon={<KeyboardArrowDown/>} 
-                sx={{padding:'0.3em',marginTop:'0.5em',textTransform:'none'}}
-                onClick={() => revHandler(revToggle)}> 
-                    Revenue 
-                </Button>
-            
-            {revToggle? (
-                <Box>
-                <SideBarBtn variant="outlined">
-                    <Grid>
-                        <Grid item><BarChart fontSize='medium'/></Grid>
-                        <Grid item>Revenue In</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                    <Grid>
-                        <Grid item><BarChart fontSize='medium'/></Grid>
-                        <Grid item>Revenue Out</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                    <Grid>
-                        <Grid item><GroupAdd fontSize='medium'/></Grid>
-                        <Grid item>New Customers</Grid>
-                    </Grid>
-                </SideBarBtn>
-            </Box>
-            ): null}
-
-            
-            <Button variant='text' fullWidth 
-            endIcon={<KeyboardArrowDown/>} 
-            sx={{padding:'0.5em',marginTop:'0.5em',textTransform:'none'}}
-            onClick={() => empHandler(empToggle)}
-                > 
-                Employee Performance 
-            </Button>
-        
-            {empToggle? (
-                <Box>
-                <SideBarBtn variant="outlined">
-                <Grid>
-                        <Grid item><AddCircle fontSize='medium'/></Grid>
-                        <Grid item>New Accounts</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                    <Grid>
-                        <Grid item><Map fontSize='medium'/></Grid>
-                        <Grid item>Map</Grid>
-                    </Grid>
-                    </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                    <Grid>
-                        <Grid item><AssignmentTurnedIn fontSize='medium'/></Grid>
-                        <Grid item>Task Completed</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                <Grid>
-                        <Grid item><HourglassBottom fontSize='medium'/></Grid>
-                        <Grid item>Billable Hour</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                <Grid>
-                        <Grid item><FileCopy fontSize='medium'/></Grid>
-                        <Grid item>Billable v Non-Billable</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                <Grid>
-                        <Grid item><MoneyOff fontSize='medium'/></Grid>
-                        <Grid item>Spending</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                <Grid>
-                        <Grid item><MonetizationOn fontSize='medium'/></Grid>
-                        <Grid item>Profit & Lost</Grid>
-                    </Grid>
-                </SideBarBtn>
-                <SideBarBtn variant="outlined">
-                <Grid>
-                        <Grid item><Task fontSize='medium'/></Grid>
-                        <Grid item>Tasks</Grid>
-                    </Grid>
-                </SideBarBtn>
-            </Box>
-            ): null}
-        
-            </Paper>
-          </Grid>  
-          <Grid item xs={10}>
-              <Paper elevation={3} sx={{minHeight:'84vh'}}  >
-                <Calender/>
-                <Task/>
-               {user? flagChacker(): <p> no user exist </p>}
-            </Paper>
-          </Grid>
-        </>
-    )
-}
-const mapStateToProps = state => ({
-    // isAuthenticated: state.auth.isAuthenticated
-    user: state.auth.user
-    
+const Dashboard = ({ user }) => {
+  // checker type of user
+  const [localuser, setLocalUser] = useState({
+    username: 'Guest',
+    is_firm: true,
+    is_lawyer: false,
+    is_client: false,
   });
-  
 
-export default connect(mapStateToProps)(Dashboard)
+  useEffect(() => {
+    if (user) {
+      setLocalUser({
+        username: user.username,
+        is_firm: user.is_firm,
+        is_lawyer: user.is_lawyer,
+        is_client: user.is_client,
+      });
+    }
+  }, [user]);
+
+  const dashboardRedirect = () => {
+    if (localuser.is_firm) {
+      return <FirmDashboard />;
+    } else if (localuser.is_client) {
+      return <ClientDashboard />;
+    } else if (localuser.is_lawyer) {
+      return <LawyerDashboard />;
+    } else {
+      return <AdminDashboard />;
+    }
+  };
+  return <>{dashboardRedirect()}</>;
+};
+const mapStateToProps = (state) => ({
+  // isAuthenticated: state.auth.isAuthenticated
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Dashboard);

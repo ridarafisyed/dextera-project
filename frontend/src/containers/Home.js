@@ -2,13 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-    Avatar,
     Button, 
-    Paper,
     Grid,
     Box,
     Typography,
-    TextField,
 
 } from '@mui/material';
 

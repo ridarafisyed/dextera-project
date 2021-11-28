@@ -1,6 +1,8 @@
-import * as React from 'react';
+/** @format */
+
+// import * as React from 'react';
 import { styled } from '@mui/styles';
-import {Button, Typography} from '@mui/material/';
+import { Button } from '@mui/material/';
 
 // export const Login_btn = styled(Button)({
 //     background: 'primary ',
@@ -14,14 +16,14 @@ import {Button, Typography} from '@mui/material/';
 
 export const SideBarBtn = styled(Button)({
   fontSize: '0.6em',
-  textTransform:'none',
-  textAlign:'center',
-  width:'8em',
-  height:'8em',
-  margin:'0.7em',
-  borderColor:'#eee',
-  padding:'1em',
-  '&:hover':{
+  textTransform: 'none',
+  textAlign: 'center',
+  width: '8em',
+  height: '8em',
+  margin: '0.7em',
+  borderColor: '#eee',
+  padding: '1em',
+  '&:hover': {
     backgroundColor: 'white',
   },
-})
+});

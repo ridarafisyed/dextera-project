@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { verify } from '../actions/auth';
 
 import {
-    Avatar,
+  
     Button, 
-    Paper,
+
     Grid,
     Box,
     Typography,
-    TextField,
+
 
 } from '@mui/material';
-
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
-import BackgroundImage from '../asserts/login_light.png'
 
 const Activate = ({ verify, match }) => {
     const [verified, setVerified] = useState(false);

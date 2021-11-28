@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     
     # custom apps
     'accounts',
-    'api',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +109,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'samplesender1234@gmail.com'
-EMAIL_HOST_PASSWORD = 'naupwwwkxdtpfhmu'
+EMAIL_HOST_PASSWORD = 'hdheypmgafyxqkit'
 EMAIL_USE_TLS = True
 
 # Password validation
