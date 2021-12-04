@@ -1,7 +1,9 @@
 /** @format */
 
 import React, { Fragment } from "react";
-import { Grid, Card, Button, Typography, Link } from "@mui/material";
+import { Grid, Card, Button, Typography } from "@mui/material";
+
+import { LinkButton } from "../../styles/styles";
 
 const MatterCards = () => {
   return (
@@ -132,18 +134,7 @@ const MatterCards = () => {
           >
             Import
           </Button>
-          <Button
-            variant="contained"
-            href="/create-matter"
-            sx={{
-              minWidth: 100,
-              marginLeft: "0.5rem",
-              height: 40,
-              borderRadius: "0.5rem",
-            }}
-          >
-            + New
-          </Button>
+          <LinkButton to="/create-matter"> + New </LinkButton>
         </Grid>
       </Grid>
     </Fragment>

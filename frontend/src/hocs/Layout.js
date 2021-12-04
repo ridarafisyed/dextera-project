@@ -22,7 +22,7 @@ const Layout = ({
           <Navbar />
         </Grid>
 
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <Grid container direction="row" wrap="nowrap">
             <Grid item xs={2} m={3}>
               <Sidebar />

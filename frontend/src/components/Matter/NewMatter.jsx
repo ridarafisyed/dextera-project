@@ -15,7 +15,7 @@ const NewMatter = () => {
     contact: "",
     matter_number: "",
     matter_name: "",
-    alerts: "",
+    // alerts: "",
     matter_type: "",
     matter_source: "",
     matter_status: "",
@@ -38,7 +38,7 @@ const NewMatter = () => {
     contact,
     matter_number,
     matter_name,
-    alerts,
+    // alerts,
     matter_type,
     matter_source,
     matter_status,
@@ -112,6 +112,96 @@ const NewMatter = () => {
               onChange={(e) => onChange(e)}
               id="matter_name"
               autoComplete="matter_name"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="matter_type"
+              label="matter_type"
+              type="text"
+              value="matter_type"
+              onChange={(e) => onChange(e)}
+              id="matter_type"
+              autoComplete="matter_type"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="matter_source"
+              label="matter_source"
+              type="text"
+              value="matter_source"
+              onChange={(e) => onChange(e)}
+              id="matter_source"
+              autoComplete="matter_source"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="matter_status"
+              label="matter_status"
+              type="text"
+              value="matter_status"
+              onChange={(e) => onChange(e)}
+              id="matter_status"
+              autoComplete="matter_status"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="assign_to"
+              label="assign_to"
+              type="text"
+              value="assign_to"
+              onChange={(e) => onChange(e)}
+              id="assign_to"
+              autoComplete="assign_to"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="contact"
+              label="contact"
+              type="text"
+              value="contact"
+              onChange={(e) => onChange(e)}
+              id="contact"
+              autoComplete="contact"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="billing_rate"
+              label="billing_rate"
+              type="text"
+              value="billing_rate"
+              onChange={(e) => onChange(e)}
+              id="billing_rate"
+              autoComplete="billing_rate"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="open"
+              label="open"
+              type="text"
+              value="open"
+              onChange={(e) => onChange(e)}
+              id="open"
+              autoComplete="open"
+            />
+            <TextField
+              margin="normal"
+              variant="standard"
+              name="closed"
+              label="closed"
+              type="text"
+              value="closed"
+              onChange={(e) => onChange(e)}
+              id="closed"
+              autoComplete="closed"
             />
           </Grid>
         </Grid>

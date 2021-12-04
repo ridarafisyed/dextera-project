@@ -55,9 +55,13 @@ const App = () => (
               path="/matter-dashboard"
               component={MatterDashboard}
             />
-            <PrivateRoutes path="/matters" component={Matters} />
+            {/* <PrivateRoutes path="/matters" component={Matters} />
             <PrivateRoutes path="/matter-detail" component={MatterDetail} />
-            <PrivateRoutes path="/create-matter" component={NewMatter} />
+            <PrivateRoutes path="/create-matter" component={NewMatter} /> */}
+
+            <Route path="/matters" component={Matters} />
+            <Route path="/matter-detail" component={MatterDetail} />
+            <Route path="/create-matter" component={NewMatter} />
           </Switch>
         </Layout>
       </Router>
