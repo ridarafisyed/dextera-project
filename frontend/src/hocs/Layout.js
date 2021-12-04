@@ -1,14 +1,14 @@
 /** @format */
 
-import React, { Fragment } from 'react';
-import Navbar from '../components/Navbars/Navbar';
-import Sidebar from '../components/Sidebar/Sidebar';
-import { connect } from 'react-redux';
-import { checkAuthenticated, load_user } from '../actions/auth';
+import React from "react";
+import Navbar from "../components/Navbars/Navbar";
+import Sidebar from "../components/Sidebar/Sidebar";
+import { connect } from "react-redux";
+import { checkAuthenticated, load_user } from "../store/actions/auth";
 
-import { ThemeProvider } from '@mui/material/styles';
-import { Grid, Box } from '@mui/material';
-import theme from './Theme';
+import { ThemeProvider } from "@mui/material/styles";
+import { Grid } from "@mui/material";
+import theme from "./Theme";
 const Layout = ({
   checkAuthenticated,
   load_user,

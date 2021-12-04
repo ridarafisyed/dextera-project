@@ -1,25 +1,33 @@
 /** @format */
 
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Home from './containers/Home';
-import Login from './containers/Login';
-import Signup from './containers/Signup';
-import DashBoard from './containers/DashBoard';
-import Activate from './containers/Activate';
-import ResetPassword from './containers/ResetPassword';
-import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
-import MatterDashboard from './components/Matter/MatterDashboard';
+import { Provider } from "react-redux";
+import store from "./store/store";
 
-import { Provider } from 'react-redux';
-import store from './store';
+import Layout from "./hocs/Layout";
+import PrivateRoutes from "./utils/PrivateRoute";
 
-import Layout from './hocs/Layout';
-import PrivateRoutes from './utils/PrivateRoute';
-import Profile from './components/Profile/Profile';
+import { UserProvider } from "./context/User";
 
-import { UserProvider } from './context/User';
+import Home from "./containers/Home";
+
+// Authentication links
+import Login from "./containers/Auth/Login";
+import Signup from "./containers/Auth/Signup";
+import Activate from "./containers/Auth/Activate";
+import ResetPassword from "./containers/Auth/ResetPassword";
+import ResetPasswordConfirm from "./containers/Auth/ResetPasswordConfirm";
+
+import Profile from "./components/Profile/Profile";
+
+import DashBoard from "./containers/Dashboards/DashBoard";
+
+import MatterDashboard from "./containers/Matters/MatterDashboard";
+import Matters from "./containers/Matters/Matters";
+import MatterDetail from "./components/Matter/MatterDetail";
+import NewMatter from "./components/Matter/NewMatter";
 
 const App = () => (
   <Provider store={store}>
@@ -32,7 +40,6 @@ const App = () => (
             {/* loging regierter routes */}
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/matter" component={MatterDashboard} />
             {/* authentication routes  */}
             <Route path="/reset-password" component={ResetPassword} />
             <Route
@@ -43,11 +50,14 @@ const App = () => (
             {/* private route after login  */}
             <PrivateRoutes path="/dashboard" component={DashBoard} />
             <PrivateRoutes path="/profile" component={Profile} />
-            <PrivateRoutes path="/matters" component={MatterDashboard} />
 
-            {/* <Route path="/dashboard" component={DashBoard} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/matters" component={MatterDashboard} /> */}
+            <PrivateRoutes
+              path="/matter-dashboard"
+              component={MatterDashboard}
+            />
+            <PrivateRoutes path="/matters" component={Matters} />
+            <PrivateRoutes path="/matter-detail" component={MatterDetail} />
+            <PrivateRoutes path="/create-matter" component={NewMatter} />
           </Switch>
         </Layout>
       </Router>

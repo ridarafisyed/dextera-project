@@ -1,10 +1,12 @@
-from django.urls import path, include, re_path
-from .views.profile import ProfileDetailViewset, ProfileList
+# from django.urls import path, include, re_path
+from .views.profile import ProfileList
+from .views.matter import MatterList
 
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'profile', ProfileList, basename='profile')
+router.register(r'matter', MatterList, basename="matter")
 
 urlpatterns = router.urls
 

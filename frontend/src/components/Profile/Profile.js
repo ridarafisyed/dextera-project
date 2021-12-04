@@ -1,12 +1,9 @@
 /** @format */
 
-import React, { Fragment, useState, useEffect } from "react";
-
-import axios from "axios";
+import React, { Fragment, useState } from "react";
 
 import {
   Button,
-  IconButton,
   TextField,
   Checkbox,
   Grid,
@@ -16,14 +13,12 @@ import {
   Box,
 } from "@mui/material";
 import { TabList, TabContext, TabPanel } from "@mui/lab";
-import { useToggle } from "../../context/useToggle";
 import { connect } from "react-redux";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
-import { update_profile } from "../../actions/profile";
+import { update_profile } from "../../store/actions/profile";
 
-const Profile = ({ user, profile }) => {
-  const [open, setOpen] = useToggle(false);
+const Profile = ({ profile }) => {
   const [value, setValue] = React.useState("1");
 
   const [formData, setFormData] = useState({

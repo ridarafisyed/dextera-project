@@ -18,7 +18,7 @@ class Task(models.Model):
     matter_id = models.ForeignKey(Matter, on_delete=models.CASCADE, related_name="matter")
     assign_to = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='assign_to')
     billable = models.BooleanField(default=False)
-    private = models.BooleanField(default=False)
+    private = models.BooleanField(default=False)    
     detail = models.TextField(blank=True)
     file = models.CharField(max_length=500)
 

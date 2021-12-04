@@ -1,11 +1,9 @@
 /** @format */
 
-import React, { Fragment, useContext } from 'react';
-import { Button, Box, Grid, Paper } from '@mui/material';
+import React from "react";
+import { Button, Box, Grid, Paper } from "@mui/material";
 
 import {
-  TodayRounded,
-  TrendingUp,
   KeyboardArrowDown,
   Task,
   MoneyOff,
@@ -15,18 +13,17 @@ import {
   AssignmentTurnedIn,
   Map,
   AddCircle,
-  TodayOutlined,
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
-import { useToggle } from '../../context/useToggle';
+import { useToggle } from "../../context/useToggle";
 
-import { SideBarBtn } from '../../styles/styles';
-import { Link } from 'react-router-dom';
+import { SideBarBtn } from "../../styles/styles";
+import { Link } from "react-router-dom";
 // import { UserContext } from '../../context/User';
 
 const Sidebar = () => {
-  const [revToggle, setRevToggle] = useToggle(true);
   const [empToggle, setEmpToggle] = useToggle(true);
+  const [matterToggle, setMatterToggle] = useToggle(true);
 
   // const [state, dispatch] = useContext(UserContext);
   return (
@@ -35,7 +32,7 @@ const Sidebar = () => {
         variant="text"
         fullWidth
         endIcon={<KeyboardArrowDown />}
-        sx={{ padding: '0.5em', marginTop: '0.5em', textTransform: 'none' }}
+        sx={{ padding: "0.5em", marginTop: "0.5em", textTransform: "none" }}
         onClick={() => setEmpToggle(empToggle)}
       >
         Employee Performance
@@ -59,16 +56,6 @@ const Sidebar = () => {
                   <Map fontSize="medium" />
                 </Grid>
                 <Grid item>Profile</Grid>
-              </Box>
-            </Grid>
-          </SideBarBtn>
-          <SideBarBtn variant="outlined">
-            <Grid>
-              <Box component={Link} to="/matters">
-                <Grid item>
-                  <AssignmentTurnedIn fontSize="medium" />
-                </Grid>
-                <Grid item>Matters</Grid>
               </Box>
             </Grid>
           </SideBarBtn>
@@ -110,6 +97,60 @@ const Sidebar = () => {
                 <Task fontSize="medium" />
               </Grid>
               <Grid item>Tasks</Grid>
+            </Grid>
+          </SideBarBtn>
+        </Box>
+      ) : null}
+      <Button
+        variant="text"
+        fullWidth
+        endIcon={<KeyboardArrowDown />}
+        sx={{ padding: "0.5em", marginTop: "0.5em", textTransform: "none" }}
+        onClick={() => setMatterToggle(matterToggle)}
+      >
+        Matters
+      </Button>
+
+      {matterToggle ? (
+        <Box>
+          <SideBarBtn variant="outlined">
+            <Grid>
+              <Box component={Link} to="/matter-dashboard">
+                <Grid item>
+                  <AssignmentTurnedIn fontSize="medium" />
+                </Grid>
+                <Grid item>Matters Dashboard</Grid>
+              </Box>
+            </Grid>
+          </SideBarBtn>
+          <SideBarBtn variant="outlined">
+            <Grid>
+              <Box component={Link} to="/matters">
+                <Grid item>
+                  <AssignmentTurnedIn fontSize="medium" />
+                </Grid>
+                <Grid item>Matters</Grid>
+              </Box>
+            </Grid>
+          </SideBarBtn>
+          <SideBarBtn variant="outlined">
+            <Grid>
+              <Box component={Link} to="/matter-detail">
+                <Grid item>
+                  <AssignmentTurnedIn fontSize="medium" />
+                </Grid>
+                <Grid item>Matter Detail</Grid>
+              </Box>
+            </Grid>
+          </SideBarBtn>
+          <SideBarBtn variant="outlined">
+            <Grid>
+              <Box component={Link} to="/create-matter">
+                <Grid item>
+                  <AssignmentTurnedIn fontSize="medium" />
+                </Grid>
+                <Grid item>New Matter</Grid>
+              </Box>
             </Grid>
           </SideBarBtn>
         </Box>
