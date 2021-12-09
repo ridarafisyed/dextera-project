@@ -63,7 +63,7 @@ const SubCategory = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        setStatus(res.statusText);
+        setStatus(err.statusText);
       });
   };
   useEffect(() => {
