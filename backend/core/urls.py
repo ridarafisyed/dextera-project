@@ -1,12 +1,16 @@
 # from django.urls import path, include, re_path
 from .views.profile import ProfileList
 from .views.matter import MatterList
+from .views.category import CategoryViewset, SubCategoryViewset, ClassificationViewset
 
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'profile', ProfileList, basename='profile')
 router.register(r'matter', MatterList, basename="matter")
+router.register(r'category', CategoryViewset, basename="category")
+router.register(r'sub-category', SubCategoryViewset, basename="sub-category")
+router.register(r'classification', ClassificationViewset, basename="classification")
 
 urlpatterns = router.urls
 
@@ -26,7 +30,7 @@ urlpatterns = router.urls
 # router.register('client-vic-info', ClientVicInfoViewset , 'client-vic-info')
 # router.register('sheriff-detail',SheriffDetailViewset , 'sheriff-detail')
 # router.register('job-board', JobBoardViewset , 'job-board')
-# router.register('matter', MatterViewset, 'matter')
+
 
 # install axios in react app and pip install django-cors-headers in django app 
 

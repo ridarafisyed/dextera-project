@@ -133,7 +133,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       margin="normal"
                       fullWidth
-                      variant="standard"
+                      variant="outlined"
                       label="Username"
                       value={username}
                       id="username"
@@ -146,7 +146,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Mobile #"
                       id="mobile"
                       name="mobile"
@@ -158,7 +158,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Phone #"
                       id="phone"
                       name="phone"
@@ -172,7 +172,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Email #"
                       id="email"
                       name="email"
@@ -185,7 +185,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="State"
                       id="state"
                       name="state"
@@ -197,7 +197,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="City"
                       id="city"
                       name="city"
@@ -211,7 +211,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Language"
                       value={language}
                       id="language"
@@ -265,7 +265,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       margin="normal"
                       fullWidth
-                      variant="standard"
+                      variant="outlined"
                       label="Law School"
                       id="law_school"
                       name="law_school"
@@ -276,7 +276,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Grad year"
                       id="grad_year"
                       name="grad_year"
@@ -287,7 +287,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Bar Admittance Date"
                       id="bar_admit_date"
                       name="bar_admit_date"
@@ -300,7 +300,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Undergrad school"
                       id="undergrad_school"
                       name="undergrad_school"
@@ -311,7 +311,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Undergrade area of study"
                       id="undergrad_area"
                       name="undergrad_area"
@@ -322,7 +322,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Undergrade year"
                       id="undergrad_year"
                       name="undergrad_year"
@@ -335,7 +335,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Bar"
                       id="bar_no"
                       name="bar_no"
@@ -346,7 +346,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Admitted practice (state & District)"
                       value={admitted_practice}
                       id="admitted_practice"
@@ -377,7 +377,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       margin="normal"
                       fullWidth
-                      variant="standard"
+                      variant="outlined"
                       label="Practive Time (months / years)"
                       id="practice_time"
                       name="practice_time"
@@ -388,7 +388,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Longest tenure (months / years)"
                       id="longest_tenure"
                       name="longest_tenure"
@@ -399,7 +399,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Average tenure (months / years)"
                       value={average_tenure}
                       onChange={(e) => onChange(e)}
@@ -412,7 +412,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Time at Current Company (months / years)"
                       id="current_tenure"
                       name="current_tenure"
@@ -423,7 +423,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="# of Companies past Bar"
                       id="past_bar_companies_no"
                       name="past_bar_companies_no"
@@ -434,7 +434,7 @@ const Profile = ({ profile }) => {
                     <TextField
                       fullWidth
                       margin="normal"
-                      variant="standard"
+                      variant="outlined"
                       label="Primary areas of Law"
                       id="primary_area"
                       name="primary_area"

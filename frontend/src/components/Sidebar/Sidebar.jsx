@@ -9,6 +9,7 @@ import {
   MoneyOff,
   MonetizationOn,
   FileCopy,
+  Receipt,
   HourglassBottom,
   AssignmentTurnedIn,
   Map,
@@ -51,6 +52,16 @@ const Sidebar = () => {
           </SideBarBtn>
           <SideBarBtn variant="outlined">
             <Grid>
+              <Box component={Link} to="/invoices">
+                <Grid item>
+                  <Receipt fontSize="medium" />
+                </Grid>
+                <Grid item>Invoices</Grid>
+              </Box>
+            </Grid>
+          </SideBarBtn>
+          <SideBarBtn variant="outlined">
+            <Grid>
               <Box component={Link} to="/Profile">
                 <Grid item>
                   <Map fontSize="medium" />
@@ -61,18 +72,22 @@ const Sidebar = () => {
           </SideBarBtn>
           <SideBarBtn variant="outlined">
             <Grid>
-              <Grid item>
-                <HourglassBottom fontSize="medium" />
-              </Grid>
-              <Grid item>Billable Hour</Grid>
+              <Box component={Link} to="/create-user">
+                <Grid item>
+                  <HourglassBottom fontSize="medium" />
+                </Grid>
+                <Grid item>Create User</Grid>
+              </Box>
             </Grid>
           </SideBarBtn>
           <SideBarBtn variant="outlined">
             <Grid>
-              <Grid item>
-                <FileCopy fontSize="medium" />
-              </Grid>
-              <Grid item>Billable v Non-Billable</Grid>
+              <Box component={Link} to="/manage-categories">
+                <Grid item>
+                  <FileCopy fontSize="medium" />
+                </Grid>
+                <Grid item>Manage Categories</Grid>
+              </Box>
             </Grid>
           </SideBarBtn>
           <SideBarBtn variant="outlined">

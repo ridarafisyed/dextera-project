@@ -6,15 +6,15 @@ import { connect } from "react-redux";
 import { logout } from "../../store/actions/auth";
 
 // styling imports
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 
 import Logo from "../../asserts/logo_white copy.png";
 
@@ -87,7 +87,7 @@ const Navbar = ({ logout, isAuthenticated, user }) => {
         }}
       >
         <MenuItem component={Link} to="/profile">
-          Profile{" "}
+          Profile
         </MenuItem>
         {/* <MenuItem component={Link} to=''>My account</MenuItem> */}
         <MenuItem
@@ -100,7 +100,7 @@ const Navbar = ({ logout, isAuthenticated, user }) => {
         </MenuItem>
       </Menu>
       <Button component={Link} color="inherit" to="/dashboard">
-        Dashboard{" "}
+        Dashboard
       </Button>
       <Button component={Link} color="inherit" href="#!" onClick={logout_user}>
         Logout
@@ -110,20 +110,10 @@ const Navbar = ({ logout, isAuthenticated, user }) => {
   return (
     <Fragment>
       <Box sx={{ flexGrow: 1 }} component="nav">
-        <AppBar position="static" color="transparent">
+        <AppBar position="static" color="transparent" sx={{ border: "none" }}>
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <Link to="/">
-                {" "}
                 <img
                   src={Logo}
                   alt="logo"

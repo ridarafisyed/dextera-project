@@ -49,13 +49,13 @@ const Activities = () => {
       <Box component={Paper} mt={2} p={2}>
         <Typography sx={{ fontSize: "0.8rem" }}>Upcoming Activity</Typography>
         <List mt={1} sx={{ fontSize: "0.75rem" }}>
-          <ListItem components="p">
+          <ListItem components={Typography}>
             Date: - Activity - Responsible Party
           </ListItem>
-          <ListItem components="p">
+          <ListItem components={Typography}>
             YYYY/MM/DD: - Hearing for MSC - MJJ
           </ListItem>
-          <ListItem components="p">YYYY/MM/DD: - Trail - KSK</ListItem>
+          <ListItem components={Typography}>YYYY/MM/DD: - Trail - KSK</ListItem>
         </List>
       </Box>
     </Fragment>

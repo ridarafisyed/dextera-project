@@ -29,6 +29,11 @@ import Matters from "./containers/Matters/Matters";
 import MatterDetail from "./components/Matter/MatterDetail";
 import NewMatter from "./components/Matter/NewMatter";
 
+import Invoice from "./containers/Invoice/Invoice";
+import CreateInvoice from "./components/Invoice/CreateInvoice";
+
+import Payment from "./components/Invoice/Payment";
+import ManageCategory from "./components/Category/ManageCategory";
 const App = () => (
   <Provider store={store}>
     <UserProvider>
@@ -48,13 +53,10 @@ const App = () => (
             />
             <Route path="/activate/:uid/:token" component={Activate} />
             {/* private route after login  */}
-            <PrivateRoutes path="/dashboard" component={DashBoard} />
-            <PrivateRoutes path="/profile" component={Profile} />
+            <Route path="/dashboard" component={DashBoard} />
+            <Route path="/profile" component={Profile} />
 
-            <PrivateRoutes
-              path="/matter-dashboard"
-              component={MatterDashboard}
-            />
+            <Route path="/matter-dashboard" component={MatterDashboard} />
             {/* <PrivateRoutes path="/matters" component={Matters} />
             <PrivateRoutes path="/matter-detail" component={MatterDetail} />
             <PrivateRoutes path="/create-matter" component={NewMatter} /> */}
@@ -62,6 +64,12 @@ const App = () => (
             <Route path="/matters" component={Matters} />
             <Route path="/matter-detail" component={MatterDetail} />
             <Route path="/create-matter" component={NewMatter} />
+
+            <Route path="/invoices" component={Invoice} />
+            <Route path="/create-invoice" component={CreateInvoice} />
+            <Route path="/recive-invoice" component={Payment} />
+            <Route path="/create-user" component={ManageCategory} />
+            <Route path="/manage-categories" component={ManageCategory} />
           </Switch>
         </Layout>
       </Router>

@@ -3,7 +3,7 @@
 // import * as React from 'react';
 import { styled } from "@mui/styles";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material/";
+import { Button, InputBase } from "@mui/material";
 
 // export const Login_btn = styled(Button)({
 //     background: 'primary ',
@@ -29,6 +29,17 @@ export const SideBarBtn = styled(Button)({
   },
 });
 
+export const SecNavbar = styled("nav")({
+  boxShadow: "none",
+  backgroundColor: "#1c54b2",
+  color: "#eee",
+  position: "reletive",
+  padding: "0",
+  margin: "0",
+  height: "3.5rem",
+  width: "100%",
+});
+
 export const LinkButton = styled(Link)({
   textAlign: "center",
   textTransform: "uppercase",
@@ -45,3 +56,39 @@ export const LinkButton = styled(Link)({
     color: "white",
   },
 });
+
+export const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: "1.5rem",
+  backgroundColor: "#eee",
+  "&:hover": {
+    backgroundColor: "#ddd",
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: "40%",
+}));
+
+export const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+export const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
+    },
+  },
+}));

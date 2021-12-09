@@ -21,7 +21,7 @@ const Cards = ({ data }) => {
               {data.title}
             </Typography>
             <Typography variant="h3" component="h4">
-              {data.amount}
+              $ {data.amount}
             </Typography>
           </CardContent>
         </Card>

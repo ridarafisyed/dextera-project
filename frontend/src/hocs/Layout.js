@@ -1,7 +1,8 @@
 /** @format */
 
-import React from "react";
+import React, { Fragment } from "react";
 import Navbar from "../components/Navbars/Navbar";
+import NavbarSec from "../components/Navbars/NavbarSec";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user } from "../store/actions/auth";
@@ -10,8 +11,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Grid } from "@mui/material";
 import theme from "./Theme";
 const Layout = ({
-  checkAuthenticated,
-  load_user,
+  // checkAuthenticated,
+  // load_user,
   children,
   isAuthenticated,
 }) => {
@@ -23,14 +24,19 @@ const Layout = ({
         </Grid>
 
         {!isAuthenticated ? (
-          <Grid container direction="row" wrap="nowrap">
-            <Grid item xs={2} m={3}>
-              <Sidebar />
+          <Fragment>
+            <Grid item xs={12}>
+              <NavbarSec />
             </Grid>
-            <Grid item xs={10} p={3}>
-              {children}
+            <Grid container direction="row" wrap="nowrap">
+              <Grid item xs={2} m={3}>
+                <Sidebar />
+              </Grid>
+              <Grid item xs={10} p={1}>
+                {children}
+              </Grid>
             </Grid>
-          </Grid>
+          </Fragment>
         ) : (
           <Grid item xs={12}>
             {children}

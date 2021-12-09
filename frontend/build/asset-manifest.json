@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/static/js/main.e95377ac.chunk.js",
-    "main.js.map": "/static/js/main.e95377ac.chunk.js.map",
+    "main.js": "/static/js/main.a5c8d30c.chunk.js",
+    "main.js.map": "/static/js/main.a5c8d30c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.248907bc.js",
     "runtime-main.js.map": "/static/js/runtime-main.248907bc.js.map",
-    "static/js/2.ec5b3f5f.chunk.js": "/static/js/2.ec5b3f5f.chunk.js",
-    "static/js/2.ec5b3f5f.chunk.js.map": "/static/js/2.ec5b3f5f.chunk.js.map",
+    "static/js/2.a9b4337e.chunk.js": "/static/js/2.a9b4337e.chunk.js",
+    "static/js/2.a9b4337e.chunk.js.map": "/static/js/2.a9b4337e.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.ec5b3f5f.chunk.js.LICENSE.txt": "/static/js/2.ec5b3f5f.chunk.js.LICENSE.txt",
+    "static/js/2.a9b4337e.chunk.js.LICENSE.txt": "/static/js/2.a9b4337e.chunk.js.LICENSE.txt",
     "static/media/login_light.68269488.png": "/static/media/login_light.68269488.png",
     "static/media/logo_white copy.8cf635fb.png": "/static/media/logo_white copy.8cf635fb.png",
     "static/media/signup_light.43c9406f.png": "/static/media/signup_light.43c9406f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.248907bc.js",
-    "static/js/2.ec5b3f5f.chunk.js",
-    "static/js/main.e95377ac.chunk.js"
+    "static/js/2.a9b4337e.chunk.js",
+    "static/js/main.a5c8d30c.chunk.js"
   ]
 }
