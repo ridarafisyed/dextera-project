@@ -63,7 +63,7 @@ const SubCategory = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        setError(err.message);
+        setStatus(res.statusText);
       });
   };
   useEffect(() => {
@@ -77,12 +77,9 @@ const SubCategory = () => {
       )
       .then((res) => {
         FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: res.statusText, message: "Success" }}
-          />
-        );
-      });
+        setStatus(res.statusText);
+      })
+      .catch((err) => setStatus(err.statusText));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,19 +88,9 @@ const SubCategory = () => {
       .post(`${process.env.REACT_APP_API_URL}/api/sub-category/`, body, CONFIG)
       .then((res) => {
         FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: res.statusText, message: "Success" }}
-          />
-        );
       })
       .catch((err) => {
         FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: err.statusText, message: "Success" }}
-          />
-        );
       });
   };
   return (

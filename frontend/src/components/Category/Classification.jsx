@@ -30,7 +30,6 @@ const CONFIG = {
 const Classification = () => {
   const [classification, setClassification] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -63,7 +62,7 @@ const Classification = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        setError(err.message);
+        setStatus(err.statusText);
       });
   };
   useEffect(() => {
@@ -77,11 +76,8 @@ const Classification = () => {
       )
       .then((res) => {
         FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: res.statusText, message: "Success" }}
-          />
-        );
+        setStatus(res.statusText);
+        return <ActionAlerts value={{ status: status }} />;
       });
   };
   const handleSubmit = (e) => {
@@ -95,19 +91,11 @@ const Classification = () => {
       )
       .then((res) => {
         FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: res.statusText, message: "Success" }}
-          />
-        );
+        return <ActionAlerts value={{ status: res.statusText }} />;
       })
       .catch((err) => {
         FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: err.statusText, message: "Success" }}
-          />
-        );
+        return <ActionAlerts value={{ status: err.statusText }} />;
       });
   };
   return (

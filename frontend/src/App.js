@@ -56,20 +56,26 @@ const App = () => (
             <Route path="/dashboard" component={DashBoard} />
             <Route path="/profile" component={Profile} />
 
-            <Route path="/matter-dashboard" component={MatterDashboard} />
+            <PrivateRoutes
+              path="/matter-dashboard"
+              component={MatterDashboard}
+            />
             {/* <PrivateRoutes path="/matters" component={Matters} />
             <PrivateRoutes path="/matter-detail" component={MatterDetail} />
             <PrivateRoutes path="/create-matter" component={NewMatter} /> */}
 
-            <Route path="/matters" component={Matters} />
-            <Route path="/matter-detail" component={MatterDetail} />
-            <Route path="/create-matter" component={NewMatter} />
+            <PrivateRoutes path="/matters" component={Matters} />
+            <PrivateRoutes path="/matter-detail" component={MatterDetail} />
+            <PrivateRoutes path="/create-matter" component={NewMatter} />
 
-            <Route path="/invoices" component={Invoice} />
-            <Route path="/create-invoice" component={CreateInvoice} />
-            <Route path="/recive-invoice" component={Payment} />
-            <Route path="/create-user" component={ManageCategory} />
-            <Route path="/manage-categories" component={ManageCategory} />
+            <PrivateRoutes path="/invoices" component={Invoice} />
+            <PrivateRoutes path="/create-invoice" component={CreateInvoice} />
+            <PrivateRoutes path="/recive-invoice" component={Payment} />
+            <PrivateRoutes path="/create-user" component={ManageCategory} />
+            <PrivateRoutes
+              path="/manage-categories"
+              component={ManageCategory}
+            />
           </Switch>
         </Layout>
       </Router>
