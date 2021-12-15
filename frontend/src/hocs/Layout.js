@@ -23,7 +23,7 @@ const Layout = ({
           <Navbar />
         </Grid>
 
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <Fragment>
             <Grid item xs={12}>
               <NavbarSec />

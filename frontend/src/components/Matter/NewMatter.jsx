@@ -1,73 +1,111 @@
 /** @format */
 
-import React, { Fragment, useState } from "react";
-import {
-  TextField,
-  Box,
-  Grid,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
-  Typography,
-} from "@mui/material";
+import React, { Fragment, useEffect, useState } from "react";
+import axios from "axios";
+import { TextField, Box, Grid, Button, Typography } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 
+import { LocalizationProvider, DateRangePicker, DatePicker } from "@mui/lab";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+
+import { CreateMatter, CONFIG } from "../../api/MatterApi";
+
+import { ActionAlerts, TotalDays, GetDate } from "../../utils/ActionAlerts";
+
 const NewMatter = () => {
+  // const matter_number = Math.floor(Math.random() * 10000000);
+  const mask = "____-__-__";
+  const matter_number = 23568;
+  const [openDate, setOpenDate] = useState(new Date("2021-12-01T21:11:54"));
+  const [whenDate, setWhenDate] = useState(new Date("2021-12-01T21:11:54"));
+  const [closeDate, setCloseDate] = useState(new Date("2021-12-01T21:11:54"));
+  const [totalDays, setTotalDays] = useState(0);
   const [matterData, setMatterData] = useState({
-    contact: "",
-    matter_number: "",
+    contact: 0,
     matter_name: "",
-    alerts: "",
     matter_type: "",
     matter_source: "",
     matter_status: "",
-    assign_to: "",
-    billing_rate: "",
-    open: "",
-    closed: "",
-    total_days: "",
+    assign_to: 0,
+    assign_by: 0,
+    billing_rate: 0,
+    alerts: "",
+
     jurisdiction: "",
-    status_limitaion: "",
+    status_limitaion: null,
     opposing_counsel: "",
     where: "",
-    when: "",
     involved: "",
     witnesses: "",
     narrative: "",
   });
 
-  // const {
-  //   contact,
-  //   matter_number,
-  //   matter_name,
-  //   alerts,
-  //   matter_type,
-  //   matter_source,
-  //   matter_status,
-  //   assign_to,
-  //   billing_rate,
-  //   open,
-  //   closed,
-  //   total_days,
-  //   jurisdiction,
-  //   status_limitaion,
-  //   opposing_counsel,
-  //   where,
-  //   when,
-  //   involved,
-  //   witnesses,
-  //   narrative,
-  // } = matterData;
+  const {
+    contact,
+    matter_name,
+    matter_type,
+    matter_source,
+    matter_status,
+    assign_to,
+    assign_by,
+    billing_rate,
+    alerts,
+
+    jurisdiction,
+    status_limitaion,
+    opposing_counsel,
+    where,
+    involved,
+    witnesses,
+    narrative,
+  } = matterData;
 
   const onChange = (e) =>
     setMatterData({ ...matterData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // login(username, email, password);
+    let open_date = GetDate(openDate);
+    let close_date = GetDate(closeDate);
+    let when = GetDate(whenDate);
+    let total_days = totalDays;
+    const body = JSON.stringify({
+      contact,
+      matter_name,
+      matter_type,
+      matter_source,
+      matter_status,
+      assign_to,
+      assign_by,
+      billing_rate,
+      alerts,
+      open_date,
+      close_date,
+      total_days,
+      jurisdiction,
+      status_limitaion,
+      opposing_counsel,
+      where,
+      when,
+      involved,
+      witnesses,
+      narrative,
+    });
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/new-matter/`, body, CONFIG)
+      .then((res) => {
+        <ActionAlerts value={{ status: res.statusText, message: "Success" }} />;
+      })
+      .catch((err) => {
+        <ActionAlerts value={{ status: err.statusText, message: "Failed" }} />;
+      });
+    console.log(body);
   };
+  useEffect(() => {
+    let days = TotalDays(openDate, closeDate);
+    setTotalDays(days);
+  }, [openDate, closeDate]);
+
   return (
     <Fragment>
       <Box
@@ -89,11 +127,11 @@ const NewMatter = () => {
               variant="outlined"
               name="contact"
               label="contact"
-              type="text"
-              value="contact"
+              type="number"
+              min="0"
+              value={contact}
               onChange={(e) => onChange(e)}
               id="contact"
-              autoComplete="contact"
               sx={{
                 width: "97%",
               }}
@@ -105,10 +143,9 @@ const NewMatter = () => {
               name="matter_number"
               label="matter_number"
               type="text"
-              value="matter_number"
-              onChange={(e) => onChange(e)}
+              value={matter_number}
+              // onChange={(e) => onChange(e)}
               id="matter_number"
-              autoComplete="matter_number"
               disabled
               sx={{
                 width: "48%",
@@ -121,10 +158,9 @@ const NewMatter = () => {
               name="matter_name"
               label="matter_name"
               type="text"
-              value="matter_name"
+              value={matter_name}
               onChange={(e) => onChange(e)}
               id="matter_name"
-              autoComplete="matter_name"
               sx={{
                 width: "47%",
               }}
@@ -136,7 +172,7 @@ const NewMatter = () => {
               name="alerts"
               label="alerts"
               type="text"
-              value="alerts"
+              value={alerts}
               onChange={(e) => onChange(e)}
               id="alerts"
               autoComplete="alerts"
@@ -151,10 +187,9 @@ const NewMatter = () => {
               name="matter_type"
               label="matter_type"
               type="text"
-              value="matter_type"
+              value={matter_type}
               onChange={(e) => onChange(e)}
               id="matter_type"
-              autoComplete="matter_type"
               sx={{
                 width: "48%",
               }}
@@ -166,10 +201,9 @@ const NewMatter = () => {
               name="matter_source"
               label="matter_source"
               type="text"
-              value="matter_source"
+              value={matter_source}
               onChange={(e) => onChange(e)}
               id="matter_source"
-              autoComplete="matter_source"
               sx={{
                 width: "47%",
               }}
@@ -181,10 +215,9 @@ const NewMatter = () => {
               name="matter_status"
               label="matter_status"
               type="text"
-              value="matter_status"
+              value={matter_status}
               onChange={(e) => onChange(e)}
               id="matter_status"
-              autoComplete="matter_status"
               sx={{
                 width: "48%",
               }}
@@ -195,11 +228,10 @@ const NewMatter = () => {
               variant="outlined"
               name="assign_to"
               label="assign_to"
-              type="text"
-              value="assign_to"
+              type="number"
+              value={assign_to}
               onChange={(e) => onChange(e)}
               id="assign_to"
-              autoComplete="assign_to"
               sx={{
                 width: "47%",
               }}
@@ -213,38 +245,40 @@ const NewMatter = () => {
               variant="outlined"
               name="billing_rate"
               label="billing_rate"
-              type="text"
-              value="billing_rate"
+              step="0.01"
+              type="number"
+              value={billing_rate}
               onChange={(e) => onChange(e)}
               id="billing_rate"
-              autoComplete="billing_rate"
             />
-            <TextField
-              size="small"
-              fullWidth
-              margin="normal"
-              variant="outlined"
-              name="open"
-              label="open"
-              type="text"
-              value="open"
-              onChange={(e) => onChange(e)}
-              id="open"
-              autoComplete="open"
-            />
-            <TextField
-              size="small"
-              fullWidth
-              margin="normal"
-              variant="outlined"
-              name="closed"
-              label="closed"
-              type="text"
-              value="closed"
-              onChange={(e) => onChange(e)}
-              id="closed"
-              autoComplete="closed"
-            />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                inputFormat="yyyy-MM-dd"
+                mask={mask}
+                label="Open Date"
+                value={openDate}
+                name="open"
+                id="open"
+                onChange={(e) => setOpenDate(e)}
+                renderInput={(params) => (
+                  <TextField fullWidth size="small" {...params} />
+                )}
+              />
+            </LocalizationProvider>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                inputFormat="yyyy-MM-dd"
+                mask={mask}
+                label="Close Date"
+                value={closeDate}
+                name="closed"
+                id="closed"
+                onChange={(e) => setCloseDate(e)}
+                renderInput={(params) => (
+                  <TextField fullWidth size="small" {...params} />
+                )}
+              />
+            </LocalizationProvider>
             <TextField
               size="small"
               fullWidth
@@ -252,11 +286,11 @@ const NewMatter = () => {
               variant="outlined"
               name="total_days"
               label="total_days"
-              type="text"
-              value="total_days"
-              onChange={(e) => onChange(e)}
+              type="number"
+              value={totalDays}
+              onChange={(e) => setTotalDays(TotalDays(openDate, closeDate))}
               id="total_days"
-              autoComplete="total_days"
+              disabled
             />
           </Grid>
 
@@ -274,10 +308,9 @@ const NewMatter = () => {
               name="jurisdiction"
               label="jurisdiction"
               type="text"
-              value="jurisdiction"
+              value={jurisdiction}
               onChange={(e) => onChange(e)}
               id="jurisdiction"
-              autoComplete="jurisdiction"
             />
             <TextField
               size="small"
@@ -287,10 +320,9 @@ const NewMatter = () => {
               name="status_limitaion"
               label="status_limitaion"
               type="text"
-              value="status_limitaion"
+              value={status_limitaion}
               onChange={(e) => onChange(e)}
               id="status_limitaion"
-              autoComplete="status_limitaion"
             />
             <TextField
               size="small"
@@ -300,10 +332,9 @@ const NewMatter = () => {
               name="opposing_counsel"
               label="opposing_counsel"
               type="text"
-              value="opposing_counsel"
+              value={opposing_counsel}
               onChange={(e) => onChange(e)}
               id="opposing_counsel"
-              autoComplete="opposing_counsel"
             />
           </Grid>
           <Grid item xs={4}>
@@ -318,24 +349,24 @@ const NewMatter = () => {
               name="where"
               label="where"
               type="text"
-              value="where"
+              value={where}
               onChange={(e) => onChange(e)}
               id="where"
-              autoComplete="where"
             />
-            <TextField
-              size="small"
-              fullWidth
-              margin="normal"
-              variant="outlined"
-              name="when"
-              label="when"
-              type="text"
-              value="when"
-              onChange={(e) => onChange(e)}
-              id="when"
-              autoComplete="when"
-            />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                inputFormat="yyyy-MM-dd"
+                mask={mask}
+                label="When"
+                value={whenDate}
+                name="when"
+                id="when"
+                onChange={(e) => setWhenDate(e)}
+                renderInput={(params) => (
+                  <TextField fullWidth size="small" {...params} />
+                )}
+              />
+            </LocalizationProvider>
             <TextField
               size="small"
               fullWidth
@@ -344,10 +375,9 @@ const NewMatter = () => {
               name="involved"
               label="Who was involved"
               type="text"
-              value="involved"
+              value={involved}
               onChange={(e) => onChange(e)}
               id="involved"
-              autoComplete="involved"
             />
             <TextField
               size="small"
@@ -357,35 +387,34 @@ const NewMatter = () => {
               name="witnesses"
               label="witnesses"
               type="text"
-              value="witnesses"
+              value={witnesses}
               onChange={(e) => onChange(e)}
               id="witnesses"
-              autoComplete="witnesses"
             />
           </Grid>
           <Grid item xs={4}>
             <TextField
               size="small"
               fullWidth
-              id="outlined-multiline-static"
-              label="Customer Narrative of the event"
+              label="Customer Narrative of the Event"
               multiline
+              type="text"
               rows={10}
-              defaultValue="Default Value"
-              variant="outlined"
-              value="narrative"
+              value={narrative}
               onChange={(e) => onChange(e)}
+              defaultValue="Narrative"
+              name="narrative"
               id="narrative"
-              autoComplete="narrative"
             />
           </Grid>
         </Grid>
         <Button
           variant="contained"
+          type="submit"
           sx={{ float: "right" }}
           endIcon={<SaveIcon />}
         >
-          Send
+          Save
         </Button>
       </Box>
     </Fragment>

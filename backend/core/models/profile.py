@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 class Profile(models.Model):
     # profile
     username = models.CharField(max_length=255, default="", unique=True)
@@ -30,12 +28,11 @@ class Profile(models.Model):
     past_bar_companies_no = models.CharField(max_length=255, default="", blank=True)
     primary_area = models.CharField(max_length=255, default="", blank=True)
 
+    status = models.CharField(max_length=255, default="")
+
     # timestemps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.username
-
-
-   

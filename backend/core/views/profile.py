@@ -2,7 +2,7 @@
 from ..models.profile import Profile
 from rest_framework import  viewsets, permissions
 from django.shortcuts import get_object_or_404
-from ..serializers.profile import ProfileDetailSerializer, ProfileSerializer
+from ..serializers.profile import ProfileSerializer
 from rest_framework.response import Response
 
 
@@ -22,12 +22,11 @@ class ProfileList(viewsets.ModelViewSet):
         return Response(serializer.data)
     
 
-# access 
-class ProfileDetailViewset(viewsets.ModelViewSet):
-        serializer_class = ProfileDetailSerializer
+# # access 
+# class ProfileDetailViewset(viewsets.ModelViewSet):
+#         serializer_class = ProfileDetailSerializer
 
-        def get_queryset(self):
-            username = self.kwargs['username']
-            return Profile.objects.get(profile__username=username)
-        
+#         def get_queryset(self):
+#             username = self.kwargs['username']
+#             return Profile.objects.get(profile__username=username)
         

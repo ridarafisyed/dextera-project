@@ -9,7 +9,7 @@ import {
   PROFILE_CREATED_FAIL,
   PROFILE_CREATED_SUCCESS,
 } from "./types";
-
+export const set_status = (status) => async (dispatch) => {};
 export const create_profile = (username, email) => async (dispatch) => {
   const config = {
     headers: {

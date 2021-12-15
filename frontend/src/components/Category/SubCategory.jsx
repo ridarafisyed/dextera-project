@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 import ClearIcon from "@mui/icons-material/Clear";
-import ActionAlerts from "../../utils/ActionAlerts";
+import { ActionAlerts } from "../../utils/ActionAlerts";
 
 const CONFIG = {
   headers: {

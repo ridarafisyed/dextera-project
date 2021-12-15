@@ -46,15 +46,17 @@ const Filters = () => {
           label=" Paid/ Unpaid"
           control={<Switch checked={paid} onChange={() => setPaid(paid)} />}
         />
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-          />
-        </Search>
+        <Box mt={2}>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+        </Box>
         <FormControl sx={{ width: "8rem", m: 2 }}>
           <InputLabel id="demo-simple-select-label">All Invoice</InputLabel>
           <Select
@@ -101,8 +103,7 @@ const Filters = () => {
           </Select>
         </FormControl>
         <Typography component="span" variant="h8" sx={{ width: "8rem", m: 2 }}>
-          {" "}
-          Status:{" "}
+          Status:
         </Typography>
 
         <FormControl sx={{ width: "8rem", m: 2 }}>

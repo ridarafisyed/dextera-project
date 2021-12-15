@@ -3,17 +3,17 @@
 export const cardData = [
   {
     id: 1,
-    title: 'Revenue In',
+    title: "Revenue In",
     amount: 23345,
   },
   {
     id: 2,
-    title: 'Revenue out',
+    title: "Revenue out",
     amount: 13345,
   },
   {
     id: 3,
-    title: 'New Matters',
+    title: "New Matters",
     amount: 3425,
   },
 ];

@@ -7,7 +7,6 @@ import {
   KeyboardArrowDown,
   Task,
   MoneyOff,
-  MonetizationOn,
   FileCopy,
   Receipt,
   HourglassBottom,
@@ -23,8 +22,7 @@ import { Link } from "react-router-dom";
 // import { UserContext } from '../../context/User';
 
 const Sidebar = () => {
-  const [empToggle, setEmpToggle] = useToggle(true);
-  const [matterToggle, setMatterToggle] = useToggle(true);
+  const [controlToggle, setControlToggle] = useToggle(true);
 
   // const [state, dispatch] = useContext(UserContext);
   return (
@@ -34,11 +32,11 @@ const Sidebar = () => {
         fullWidth
         endIcon={<KeyboardArrowDown />}
         sx={{ padding: "0.5em", marginTop: "0.5em", textTransform: "none" }}
-        onClick={() => setEmpToggle(empToggle)}
+        onClick={() => setControlToggle(controlToggle)}
       >
-        Employee Performance
+        Controls
       </Button>
-      {empToggle ? (
+      {controlToggle ? (
         <Box>
           <SideBarBtn variant="outlined">
             <Grid>
@@ -92,42 +90,24 @@ const Sidebar = () => {
           </SideBarBtn>
           <SideBarBtn variant="outlined">
             <Grid>
-              <Grid item>
-                <MoneyOff fontSize="medium" />
-              </Grid>
-              <Grid item>Spending</Grid>
+              <Box component={Link} to="/ledgers">
+                <Grid item>
+                  <MoneyOff fontSize="medium" />
+                </Grid>
+                <Grid item>Ledger</Grid>
+              </Box>
             </Grid>
           </SideBarBtn>
           <SideBarBtn variant="outlined">
             <Grid>
-              <Grid item>
-                <MonetizationOn fontSize="medium" />
-              </Grid>
-              <Grid item>Profit & Lost</Grid>
+              <Box component={Link} to="/create-task">
+                <Grid item>
+                  <Task fontSize="medium" />
+                </Grid>
+                <Grid item>New Task</Grid>
+              </Box>
             </Grid>
           </SideBarBtn>
-          <SideBarBtn variant="outlined">
-            <Grid>
-              <Grid item>
-                <Task fontSize="medium" />
-              </Grid>
-              <Grid item>Tasks</Grid>
-            </Grid>
-          </SideBarBtn>
-        </Box>
-      ) : null}
-      <Button
-        variant="text"
-        fullWidth
-        endIcon={<KeyboardArrowDown />}
-        sx={{ padding: "0.5em", marginTop: "0.5em", textTransform: "none" }}
-        onClick={() => setMatterToggle(matterToggle)}
-      >
-        Matters
-      </Button>
-
-      {matterToggle ? (
-        <Box>
           <SideBarBtn variant="outlined">
             <Grid>
               <Box component={Link} to="/matter-dashboard">

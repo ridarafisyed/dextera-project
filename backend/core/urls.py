@@ -1,16 +1,26 @@
 # from django.urls import path, include, re_path
+from .views.ledger import NewLedgerTimeViewset
 from .views.profile import ProfileList
-from .views.matter import MatterList
+from .views.matter import MatterList, TaskViewset, TasksViewset, NewMatterViewset, NewTaskViewset
 from .views.category import CategoryViewset, SubCategoryViewset, ClassificationViewset
 
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'profile', ProfileList, basename='profile')
+
 router.register(r'matter', MatterList, basename="matter")
+router.register(r'new-matter', NewMatterViewset, basename="new-matter")
+
 router.register(r'category', CategoryViewset, basename="category")
 router.register(r'sub-category', SubCategoryViewset, basename="sub-category")
 router.register(r'classification', ClassificationViewset, basename="classification")
+
+router.register(r'tasks', TasksViewset, basename="tasks" )
+router.register(r'task', TaskViewset, basename="task")
+router.register(r'new-task', NewTaskViewset, basename="task")
+
+router.register(r'add-time',NewLedgerTimeViewset, basename='add-time')
 
 urlpatterns = router.urls
 

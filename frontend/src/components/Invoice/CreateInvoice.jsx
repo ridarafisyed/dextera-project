@@ -19,6 +19,7 @@ import {
 import SaveIcon from "@mui/icons-material/Save";
 import { LocalizationProvider, DateRangePicker } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import { LinkButton } from "../../styles/styles";
 
 import { useToggle } from "../../context/useToggle";
 
@@ -73,6 +74,14 @@ const CreateInvoice = () => {
   const [dateRange, setDateRange] = React.useState([null, null]);
   return (
     <Fragment>
+      <Typography component="h3" variant="h4">
+        Create New Invoice
+      </Typography>
+      <Box p={3}>
+        <LinkButton to="/invoices" sx={{ float: "right" }}>
+          Invoice Dashboard
+        </LinkButton>
+      </Box>
       <Box
         component="form"
         Validate
@@ -81,9 +90,6 @@ const CreateInvoice = () => {
         }}
         onSubmit={(e) => onSubmit(e)}
       >
-        <Typography component="h3" variant="h4">
-          Create New Invoice
-        </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField

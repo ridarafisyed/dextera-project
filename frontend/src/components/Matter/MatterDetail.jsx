@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
 
@@ -10,7 +10,6 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  Checkbox,
   CardContent,
   Typography,
   Card,
@@ -20,9 +19,7 @@ import {
   ListItem,
   Paper,
   InputBase,
-  Link,
 } from "@mui/material";
-import { fontStyle } from "@mui/system";
 
 const MatterTask = () => {
   return (
@@ -143,7 +140,7 @@ const MatterDetail = () => {
       },
     },
   }));
-  const [matters, setMatters] = useState(null);
+  // const [matters, setMatters] = useState(null);
   return (
     <Fragment>
       <Grid container>

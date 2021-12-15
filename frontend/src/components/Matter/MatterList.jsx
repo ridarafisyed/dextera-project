@@ -1,6 +1,7 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import {
   Paper,
@@ -8,34 +9,45 @@ import {
   TableCell,
   TableContainer,
   TableHead,
+  TableBody,
   TableRow,
   Typography,
   FormGroup,
   FormControlLabel,
   Checkbox,
   Box,
+  containerClasses,
 } from "@mui/material";
+import { CONFIG } from "../../api/MatterApi";
+import CircleIcon from "@mui/icons-material/Circle";
+import { GetDate } from "../../utils/ActionAlerts";
 
 const MatterList = () => {
+  const [tasks, setTasks] = useState([]);
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const [redTask, setRedTask] = useState(false);
   const [greenTask, setGreenTask] = useState(false);
   const [yellowTask, setYellowTask] = useState(false);
   const [myTask, setMyTask] = useState(true);
-  const [matters, setMatters] = useState(null);
 
-  // useEffect(() => {
-  //   const config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   };
-  //   const res = axios.get(
-  //     `${process.env.REACT_APP_API_URL}/api/matter`,
-  //     config,
-  //   );
-  //   setMatters(res.data);
-  // }, []);
+  const FetchData = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/tasks/`, CONFIG)
+      .then((res) => {
+        setLoading(false);
+        setStatus(res.statusText);
+        setTasks(res.data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setStatus(err.statusText);
+      });
+  };
+  useEffect(() => {
+    FetchData();
+  }, []);
   return (
     <Box component={Paper} p={2}>
       <FormGroup aria-label="position" row>
@@ -75,22 +87,42 @@ const MatterList = () => {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell></TableCell>
               <TableCell>Matter Tasks</TableCell>
               <TableCell>Matter Name</TableCell>
               <TableCell>Last Action</TableCell>
               <TableCell>Next Action</TableCell>
               <TableCell>Assign To</TableCell>
             </TableRow>
-            {matters?.map((matter) => {
-              <TableRow id={matter.id}>
-                <TableCell>{matter.type}</TableCell>
-                <TableCell>{matter.name}</TableCell>
-                <TableCell>{matter.lastAction}</TableCell>
-                <TableCell>{matter.nextAction}</TableCell>
-                <TableCell>{matter.assign_to}</TableCell>
-              </TableRow>;
-            })}
           </TableHead>
+          <TableBody>
+            {loading
+              ? null
+              : tasks?.map((data) => {
+                  return (
+                    <TableRow id={data.id}>
+                      <TableCell>
+                        <Checkbox />
+                      </TableCell>
+                      <TableCell>
+                        {data.task_nature === "urgent" ? (
+                          <CircleIcon color="error" />
+                        ) : (
+                          <CircleIcon color="success" />
+                        )}
+                      </TableCell>
+                      <TableCell>{data.matter}</TableCell>
+                      <TableCell>
+                        {data.last_action ? data.next_action : "-"}
+                      </TableCell>
+                      <TableCell>
+                        {data.next_action ? data.next_action : "-"}
+                      </TableCell>
+                      <TableCell>{data.assign_to}</TableCell>
+                    </TableRow>
+                  );
+                })}
+          </TableBody>
         </Table>
       </TableContainer>
     </Box>

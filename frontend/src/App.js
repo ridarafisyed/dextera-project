@@ -34,6 +34,14 @@ import CreateInvoice from "./components/Invoice/CreateInvoice";
 
 import Payment from "./components/Invoice/Payment";
 import ManageCategory from "./components/Category/ManageCategory";
+import CreateUser from "./components/User/CreateUser";
+import Time from "./components/Legder/Time";
+import LedgerTImeList from "./components/Legder/LedgerTImeList";
+import LedgerActivity from "./components/Legder/LedgerActivity";
+import LegderDashbard from "./components/Legder/LegderDashbard";
+import CreateTask from "./components/Tasks/CreateTask";
+import ViewTasks from "./components/Tasks/ViewTasks";
+import LedgerDoc from "./components/Legder/LedgerDoc";
 const App = () => (
   <Provider store={store}>
     <UserProvider>
@@ -56,26 +64,29 @@ const App = () => (
             <Route path="/dashboard" component={DashBoard} />
             <Route path="/profile" component={Profile} />
 
-            <PrivateRoutes
-              path="/matter-dashboard"
-              component={MatterDashboard}
-            />
+            <Route path="/matter-dashboard" component={MatterDashboard} />
             {/* <PrivateRoutes path="/matters" component={Matters} />
             <PrivateRoutes path="/matter-detail" component={MatterDetail} />
             <PrivateRoutes path="/create-matter" component={NewMatter} /> */}
 
-            <PrivateRoutes path="/matters" component={Matters} />
-            <PrivateRoutes path="/matter-detail" component={MatterDetail} />
-            <PrivateRoutes path="/create-matter" component={NewMatter} />
+            <Route path="/matters" component={Matters} />
+            <Route path="/matter-detail" component={MatterDetail} />
+            <Route path="/create-matter" component={NewMatter} />
 
-            <PrivateRoutes path="/invoices" component={Invoice} />
-            <PrivateRoutes path="/create-invoice" component={CreateInvoice} />
-            <PrivateRoutes path="/recive-invoice" component={Payment} />
-            <PrivateRoutes path="/create-user" component={ManageCategory} />
-            <PrivateRoutes
-              path="/manage-categories"
-              component={ManageCategory}
-            />
+            <Route path="/invoices" component={Invoice} />
+            <Route path="/create-invoice" component={CreateInvoice} />
+            <Route path="/recive-invoice" component={Payment} />
+            <Route path="/create-user" component={CreateUser} />
+
+            <Route path="/manage-categories" component={ManageCategory} />
+            <Route path="/ledger-documents" component={LedgerDoc} />
+            <Route path="/time" component={Time} />
+            <Route path="/ledgers" component={LegderDashbard} />
+            <Route path="/ledger-list" component={LedgerTImeList} />
+            <Route path="/activity-list" component={LedgerActivity} />
+
+            <Route path="/create-task" component={CreateTask} />
+            <Route path="/view-tasks" component={ViewTasks} />
           </Switch>
         </Layout>
       </Router>

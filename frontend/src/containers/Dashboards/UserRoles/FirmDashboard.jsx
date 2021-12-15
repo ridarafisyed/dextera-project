@@ -31,9 +31,7 @@ const FirmDashboard = () => {
         <Grid container px={2}>
           {cardsToggle ? (
             <Grid item xs={12} mt={2}>
-              {cardData.map((data, i) => (
-                <Cards key={i} data={data} />
-              ))}
+              <Cards />
             </Grid>
           ) : null}
           {calendarToggle ? (
