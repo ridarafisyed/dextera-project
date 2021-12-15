@@ -11,7 +11,13 @@ import {
   Divider,
   FormControlLabel,
 } from "@mui/material";
+import axios from "axios";
+import { LinkButton } from "../../styles/styles";
+
+import ClearIcon from "@mui/icons-material/Clear";
+import { ActionAlerts } from "../../utils/ActionAlerts";
 import { useToggle } from "../../context/useToggle";
+import { CONFIG } from "../../api/MatterApi";
 
 const CreateUser = () => {
   const [approvel, setApprovel] = useToggle(false);
@@ -39,37 +45,82 @@ const CreateUser = () => {
     phone_ext: 0,
   });
 
-  // const {
-  //   f_name
-  // m_name,
-  // l_name,
-  // c_email,
-  // rate,
-  // role,
-  // time_zone,
-  // group,
-  // job_title,
-  // bar_no,
-  // street,
-  // suite,
-  // city,
-  // state,
-  // zip,
-  // ext,
-  // mobile,
-  // home,
-  // work_no,
-  // p_email,
-  // phone_ext,
-  // } = userData;
+  const {
+    f_name,
+    m_name,
+    l_name,
+    c_email,
+    rate,
+    role,
+    time_zone,
+    group,
+    job_title,
+    bar_no,
+    street,
+    suite,
+    city,
+    state,
+    zip,
+    ext,
+    mobile,
+    home,
+    work_no,
+    p_email,
+    phone_ext,
+  } = userData;
   const onChange = (e) =>
     setUserData({ ...userData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const body = JSON.stringify({
+      f_name,
+      m_name,
+      l_name,
+      c_email,
+      rate,
+      role,
+      time_zone,
+      group,
+      job_title,
+      bar_no,
+      street,
+      suite,
+      city,
+      state,
+      zip,
+      ext,
+      mobile,
+      home,
+      work_no,
+      p_email,
+      phone_ext,
+    });
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/create-member/`, body, CONFIG)
+      .then((res) => {
+        return (
+          <ActionAlerts
+            value={{ status: res.statusText, message: "Success" }}
+          />
+        );
+      })
+      .catch((err) => {
+        return (
+          <ActionAlerts
+            value={{ status: err.statusText, message: "Success" }}
+          />
+        );
+      });
   };
   return (
     <Fragment>
+      <Box p={3} sx={{ float: "right" }}>
+        <LinkButton to="/users">Manage User</LinkButton>
+        <LinkButton to="/user-group">Manage Group</LinkButton>
+        <LinkButton to="/user-role">Manage Role</LinkButton>
+      </Box>
+
       <Box
         component="form"
         Validate
@@ -133,7 +184,7 @@ const CreateUser = () => {
               variant="outlined"
               name="rate"
               label="rate"
-              type="text"
+              type="number"
               onChange={(e) => onChange(e)}
               id="rate"
               autoComplete="rate"
@@ -198,7 +249,7 @@ const CreateUser = () => {
               variant="outlined"
               name="bar_no"
               label="bar_no"
-              type="text"
+              type="number"
               onChange={(e) => onChange(e)}
               id="bar_no"
               autoComplete="bar_no"
@@ -261,7 +312,7 @@ const CreateUser = () => {
                 variant="outlined"
                 name="zip"
                 label="zip"
-                type="text"
+                type="number"
                 onChange={(e) => onChange(e)}
                 id="zip"
                 autoComplete="zip"
@@ -272,7 +323,7 @@ const CreateUser = () => {
                 variant="outlined"
                 name="ext"
                 label="ext"
-                type="text"
+                type="number"
                 onChange={(e) => onChange(e)}
                 id="ext"
                 autoComplete="ext"
@@ -283,19 +334,24 @@ const CreateUser = () => {
                 variant="outlined"
                 name="mobile"
                 label="mobile"
-                type="text"
+                type="phone"
                 onChange={(e) => onChange(e)}
                 id="mobile"
                 autoComplete="mobile"
               />
-              <Button variant="contained">Reset Password</Button>
+              <Button
+                variant="contained"
+                sx={{ background: "#5cb85c", marginTop: "0.5rem" }}
+              >
+                Set Password Automaticly
+              </Button>
               <TextField
                 size="small"
                 margin="normal"
                 variant="outlined"
                 name="home"
                 label="home"
-                type="text"
+                type="phone"
                 onChange={(e) => onChange(e)}
                 id="home"
                 autoComplete="home"
@@ -306,7 +362,7 @@ const CreateUser = () => {
                 variant="outlined"
                 name="work_no"
                 label="work_no"
-                type="text"
+                type="phone"
                 onChange={(e) => onChange(e)}
                 id="work_no"
                 autoComplete="work_no"
@@ -317,7 +373,7 @@ const CreateUser = () => {
                 variant="outlined"
                 name="p_email"
                 label="p_email"
-                type="text"
+                type="email"
                 onChange={(e) => onChange(e)}
                 id="p_email"
                 autoComplete="p_email"
@@ -328,27 +384,22 @@ const CreateUser = () => {
                 variant="outlined"
                 name="phone_ext"
                 label="phone_ext"
-                type="text"
+                type="number"
                 onChange={(e) => onChange(e)}
                 id="phone_ext"
                 autoComplete="phone_ext"
               />
             </Box>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <Box
               sx={{
                 "& .MuiButton-root": { m: 1 },
+                float: "right",
               }}
             >
-              <Button variant="contained" sx={{ background: "#5cb85c" }}>
-                Activate
-              </Button>
-              <Button variant="contained" sx={{ background: "#f0ad4e" }}>
-                Deactivate
-              </Button>
-              <Button variant="contained" sx={{ background: "#d9534f" }}>
-                Delete
+              <Button variant="contained" type="submit">
+                Create Member
               </Button>
             </Box>
           </Grid>

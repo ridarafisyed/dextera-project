@@ -1,6 +1,7 @@
 # from django.urls import path, include, re_path
+from .views.contact import ContactViewset
 from .views.ledger import NewLedgerTimeViewset
-from .views.profile import ProfileList
+from .views.profile import ProfileList, CreateMemberViewset, GroupViewset, RoleViewset
 from .views.matter import MatterList, TaskViewset, TasksViewset, NewMatterViewset, NewTaskViewset
 from .views.category import CategoryViewset, SubCategoryViewset, ClassificationViewset
 
@@ -21,6 +22,11 @@ router.register(r'task', TaskViewset, basename="task")
 router.register(r'new-task', NewTaskViewset, basename="task")
 
 router.register(r'add-time',NewLedgerTimeViewset, basename='add-time')
+router.register(r'create-member', CreateMemberViewset, basename="create-member")
+router.register(r'groups', GroupViewset, basename="groups")
+router.register(r'contact', ContactViewset, basename="contact")
+
+
 
 urlpatterns = router.urls
 

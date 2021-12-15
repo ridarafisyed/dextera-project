@@ -3,6 +3,7 @@ from django.db import models
 class Profile(models.Model):
     # profile
     username = models.CharField(max_length=255, default="", unique=True)
+    
     email= models.EmailField(max_length=255, default="")
     mobile = models.IntegerField(default=0, blank=True, null=True)
     phone = models.IntegerField(default=0, blank=True, null=True)
@@ -36,3 +37,38 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.username
+
+class Member(models.Model):
+    f_name= models.CharField(max_length=255, default="", blank=True)
+    m_name= models.CharField(max_length=255, default="", blank=True)
+    l_name= models.CharField(max_length=255, default="", blank=True)
+    c_email= models.EmailField(max_length=255, default="")
+    rate= models.IntegerField(default=0, blank=True, null=True)
+    role= models.CharField(max_length=255, default="", blank=True)
+    time_zone= models.CharField(max_length=255, default="", blank=True)
+    group= models.CharField(max_length=255, default="", blank=True)
+    job_title= models.CharField(max_length=255, default="", blank=True)
+    bar_no= models.IntegerField(default=0, blank=True, null=True)
+    street= models.CharField(max_length=255, default="", blank=True)
+    suite= models.CharField(max_length=255, default="", blank=True)
+    city= models.CharField(max_length=255, default="", blank=True)
+    state= models.CharField(max_length=255, default="", blank=True)
+    zip =models.IntegerField(default=0, blank=True, null=True)
+    ext=  models.IntegerField(default=0, blank=True, null=True)
+    mobile= models.IntegerField(default=0, blank=True, null=True)
+    home= models.IntegerField(default=0, blank=True, null=True)
+    work_no= models.IntegerField(default=0, blank=True, null=True)
+    p_email= models.EmailField(max_length=255, default="")
+    phone_ext= models.IntegerField(default=0, blank=True, null=True)
+
+class Role(models.Model):
+    name = models.CharField(max_length=250, unique=True)
+    
+    def __str__(self):
+        return self.name
+
+class Group(models.Model):
+    name = models.CharField(max_length=250, unique=True)
+    
+    def __str__(self):
+        return self.name

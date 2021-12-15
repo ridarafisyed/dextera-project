@@ -21,6 +21,7 @@ import ResetPassword from "./containers/Auth/ResetPassword";
 import ResetPasswordConfirm from "./containers/Auth/ResetPasswordConfirm";
 
 import Profile from "./components/Profile/Profile";
+import Company from "./components/Profile/Company";
 
 import DashBoard from "./containers/Dashboards/DashBoard";
 
@@ -34,14 +35,28 @@ import CreateInvoice from "./components/Invoice/CreateInvoice";
 
 import Payment from "./components/Invoice/Payment";
 import ManageCategory from "./components/Category/ManageCategory";
+
 import CreateUser from "./components/User/CreateUser";
+import ManageUser from "./components/User/ManageUser";
+import ManageUserGroup from "./components/User/ManageUserGroup";
+import UserRole from "./components/User/UserRole";
+
 import Time from "./components/Legder/Time";
+import TimeList from "./components/Legder/TimeList";
+
 import LedgerTImeList from "./components/Legder/LedgerTImeList";
 import LedgerActivity from "./components/Legder/LedgerActivity";
 import LegderDashbard from "./components/Legder/LegderDashbard";
 import CreateTask from "./components/Tasks/CreateTask";
 import ViewTasks from "./components/Tasks/ViewTasks";
 import LedgerDoc from "./components/Legder/LedgerDoc";
+import Search from "./components/Job/Ssearch";
+import Result from "./components/Job/Result";
+import JobView from "./components/Job/JobView";
+import Templates from "./components/Template/Templates";
+
+import Contact from "./components/Contact/Contact";
+
 const App = () => (
   <Provider store={store}>
     <UserProvider>
@@ -60,33 +75,48 @@ const App = () => (
               component={ResetPasswordConfirm}
             />
             <Route path="/activate/:uid/:token" component={Activate} />
+
             {/* private route after login  */}
-            <Route path="/dashboard" component={DashBoard} />
-            <Route path="/profile" component={Profile} />
+            <PrivateRoutes path="/dashboard" component={DashBoard} />
+            <PrivateRoutes path="/profile" component={Profile} />
+            <PrivateRoutes path="/company-detail" component={Company} />
 
-            <Route path="/matter-dashboard" component={MatterDashboard} />
-            {/* <PrivateRoutes path="/matters" component={Matters} />
+            <PrivateRoutes
+              path="/matter-dashboard"
+              component={MatterDashboard}
+            />
+            <PrivateRoutes path="/matters" component={Matters} />
             <PrivateRoutes path="/matter-detail" component={MatterDetail} />
-            <PrivateRoutes path="/create-matter" component={NewMatter} /> */}
+            <PrivateRoutes path="/create-matter" component={NewMatter} />
 
-            <Route path="/matters" component={Matters} />
-            <Route path="/matter-detail" component={MatterDetail} />
-            <Route path="/create-matter" component={NewMatter} />
+            <PrivateRoutes path="/invoices" component={Invoice} />
+            <PrivateRoutes path="/create-invoice" component={CreateInvoice} />
+            <PrivateRoutes path="/recive-invoice" component={Payment} />
 
-            <Route path="/invoices" component={Invoice} />
-            <Route path="/create-invoice" component={CreateInvoice} />
-            <Route path="/recive-invoice" component={Payment} />
-            <Route path="/create-user" component={CreateUser} />
+            <PrivateRoutes path="/create-user" component={CreateUser} />
+            <PrivateRoutes path="/users" component={ManageUser} />
+            <PrivateRoutes path="/user-group" component={ManageUserGroup} />
+            <PrivateRoutes path="/user-role" component={UserRole} />
 
-            <Route path="/manage-categories" component={ManageCategory} />
-            <Route path="/ledger-documents" component={LedgerDoc} />
-            <Route path="/time" component={Time} />
-            <Route path="/ledgers" component={LegderDashbard} />
-            <Route path="/ledger-list" component={LedgerTImeList} />
-            <Route path="/activity-list" component={LedgerActivity} />
+            <PrivateRoutes
+              path="/manage-categories"
+              component={ManageCategory}
+            />
+            <PrivateRoutes path="/ledger-documents" component={LedgerDoc} />
+            <PrivateRoutes path="/time" component={Time} />
+            <PrivateRoutes path="/time-list" component={TimeList} />
+            <PrivateRoutes path="/ledgers" component={LegderDashbard} />
+            <PrivateRoutes path="/ledger-list" component={LedgerTImeList} />
+            <PrivateRoutes path="/activity-list" component={LedgerActivity} />
 
-            <Route path="/create-task" component={CreateTask} />
-            <Route path="/view-tasks" component={ViewTasks} />
+            <PrivateRoutes path="/create-task" component={CreateTask} />
+            <PrivateRoutes path="/view-tasks" component={ViewTasks} />
+
+            <PrivateRoutes path="/job-search" component={Search} />
+            <PrivateRoutes path="/job-result" component={Result} />
+            <PrivateRoutes path="/job-view" component={JobView} />
+            <PrivateRoutes path="/templates" component={Templates} />
+            <PrivateRoutes path="/contact" component={Contact} />
           </Switch>
         </Layout>
       </Router>

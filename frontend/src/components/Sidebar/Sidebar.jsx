@@ -13,6 +13,8 @@ import {
   AssignmentTurnedIn,
   Map,
   AddCircle,
+  Work,
+  Person,
 } from "@mui/icons-material";
 
 import { useToggle } from "../../context/useToggle";
@@ -70,11 +72,11 @@ const Sidebar = () => {
           </SideBarBtn>
           <SideBarBtn variant="outlined">
             <Grid>
-              <Box component={Link} to="/create-user">
+              <Box component={Link} to="/users">
                 <Grid item>
-                  <HourglassBottom fontSize="medium" />
+                  <Person fontSize="medium" />
                 </Grid>
-                <Grid item>Create User</Grid>
+                <Grid item>Manage User</Grid>
               </Box>
             </Grid>
           </SideBarBtn>
@@ -105,6 +107,16 @@ const Sidebar = () => {
                   <Task fontSize="medium" />
                 </Grid>
                 <Grid item>New Task</Grid>
+              </Box>
+            </Grid>
+          </SideBarBtn>
+          <SideBarBtn variant="outlined">
+            <Grid>
+              <Box component={Link} to="/job-search">
+                <Grid item>
+                  <Work fontSize="medium" />
+                </Grid>
+                <Grid item>Job Search</Grid>
               </Box>
             </Grid>
           </SideBarBtn>

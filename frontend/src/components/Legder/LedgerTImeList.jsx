@@ -62,6 +62,9 @@ const LedgerTImeList = () => {
         <LinkButton to="/time" sx={{ float: "right" }}>
           + Add Time
         </LinkButton>
+        <LinkButton to="/time-list" sx={{ float: "right" }}>
+          + Time List
+        </LinkButton>
         <TableContainer>
           <Table>
             <TableHead>

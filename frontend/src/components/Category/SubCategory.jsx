@@ -18,13 +18,7 @@ import {
 
 import ClearIcon from "@mui/icons-material/Clear";
 import { ActionAlerts } from "../../utils/ActionAlerts";
-
-const CONFIG = {
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-};
+import { CONFIG } from "../../api/MatterApi";
 
 const SubCategory = () => {
   const [subCategory, setSubCategory] = useState([]);

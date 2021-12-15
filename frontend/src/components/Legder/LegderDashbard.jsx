@@ -25,6 +25,9 @@ const LegderDashbard = () => {
             <LinkButton to="/ledger-documents" sx={{ float: "right" }}>
               Documents
             </LinkButton>
+            <LinkButton to="/time-list" sx={{ float: "right" }}>
+              Time List
+            </LinkButton>
           </Box>
         </Grid>
       </Grid>

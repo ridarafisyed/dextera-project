@@ -1,8 +1,8 @@
 # Create your views here.
-from ..models.profile import Profile
+from ..models.profile import Profile, Member, Group, Role
 from rest_framework import  viewsets, permissions
 from django.shortcuts import get_object_or_404
-from ..serializers.profile import ProfileSerializer
+from ..serializers.profile import ProfileSerializer, CreateMamberSerializer, GroupSerializer, RoleSerializer
 from rest_framework.response import Response
 
 
@@ -21,6 +21,29 @@ class ProfileList(viewsets.ModelViewSet):
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
     
+class CreateMemberViewset(viewsets.ModelViewSet):
+    queryset = Member.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = CreateMamberSerializer
+
+
+
+class RoleViewset(viewsets.ModelViewSet):
+    queryset = Role.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = RoleSerializer
+
+class GroupViewset(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = GroupSerializer
+
 
 # # access 
 # class ProfileDetailViewset(viewsets.ModelViewSet):

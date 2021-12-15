@@ -16,6 +16,11 @@ import {
 import { TabList, TabContext, TabPanel } from "@mui/lab";
 import { connect } from "react-redux";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import axios from "axios";
+import { LinkButton } from "../../styles/styles";
+import { ActionAlerts } from "../../utils/ActionAlerts";
+import { useToggle } from "../../context/useToggle";
+import { CONFIG } from "../../api/MatterApi";
 
 import { update_profile } from "../../store/actions/profile";
 
@@ -38,7 +43,7 @@ const Profile = ({ profile }) => {
     undergrad_school: "",
     undergrad_area: "",
     undergrad_year: "",
-    bar_no: "",
+    bar_no: 0,
     admitted_practice: "",
     practice_time: "",
     longest_tenure: "",
@@ -78,10 +83,8 @@ const Profile = ({ profile }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    console.log("sumited");
-
-    update_profile(
+    let id = profile.id;
+    const body = JSON.stringify({
       username,
       email,
       mobile,
@@ -105,7 +108,28 @@ const Profile = ({ profile }) => {
       current_tenure,
       past_bar_companies_no,
       primary_area,
-    );
+    });
+    console.log(body);
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/api/profile/${id}/`,
+        body,
+        CONFIG,
+      )
+      .then((res) => {
+        return (
+          <ActionAlerts
+            value={{ status: res.statusText, message: "Success" }}
+          />
+        );
+      })
+      .catch((err) => {
+        return (
+          <ActionAlerts
+            value={{ status: err.statusText, message: "Success" }}
+          />
+        );
+      });
   };
 
   const handleChange = (event, newValue) => {
@@ -164,7 +188,7 @@ const Profile = ({ profile }) => {
                         label="Phone #"
                         id="phone"
                         name="phone"
-                        type="text"
+                        type="number"
                         value={phone}
                         onChange={(e) => onChange(e)}
                         defaultValue={profile.phone}
@@ -282,6 +306,7 @@ const Profile = ({ profile }) => {
                         label="Grad year"
                         id="grad_year"
                         name="grad_year"
+                        type="number"
                         value={grad_year}
                         onChange={(e) => onChange(e)}
                         defaultValue={profile.grad_year}
@@ -340,6 +365,7 @@ const Profile = ({ profile }) => {
                         variant="outlined"
                         label="Bar"
                         id="bar_no"
+                        type="number"
                         name="bar_no"
                         value={bar_no}
                         onChange={(e) => onChange(e)}
