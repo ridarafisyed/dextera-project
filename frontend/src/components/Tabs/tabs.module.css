@@ -1,0 +1,27 @@
+/** @format */
+
+.tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  border-bottom: 2px solid #ddd;
+}
+.tabs > li {
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+}
+
+.current {
+  background-color: white;
+  color: #ddd;
+  font-weight: bold;
+  border: 2px solid #ddd;
+  border-bottom: 0;
+  border-top-right-radius: 5px;
+  position: relative;
+  top: 2px;
+}
+.content {
+  padding: 1rem 2rem;
+}

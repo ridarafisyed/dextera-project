@@ -1,0 +1,17 @@
+/** @format */
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+.moveRight {
+  width: "5rem";
+  float: "right";
+}
+.moveLeft {
+  width: "2rem";
+  float: "left";
+}
