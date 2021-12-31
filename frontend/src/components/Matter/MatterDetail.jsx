@@ -144,7 +144,7 @@ const MatterDetail = () => {
   return (
     <Fragment>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item lg={12}>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -155,9 +155,9 @@ const MatterDetail = () => {
             />
           </Search>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item lg={12}>
           <Grid container spacing={2}>
-            <Grid item mt={2} xs={7}>
+            <Grid item mt={2} lg={7}>
               <TableContainer>
                 <Table>
                   <TableHead>
@@ -201,7 +201,7 @@ const MatterDetail = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item mt={2} xs={5}>
+            <Grid item mt={2} lg={5}>
               <Cards />
             </Grid>
           </Grid>

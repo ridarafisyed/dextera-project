@@ -92,7 +92,7 @@ const LedgerCards = () => {
                     color="text.secondary"
                     gutterBottom
                   >
-                    Total Const
+                    Total Cost
                   </Typography>
                   <Typography variant="h4" component="h5">
                     <NumberFormat

@@ -2,7 +2,7 @@
 
 import React, { Fragment } from "react";
 import {
-  Box,
+  Grid,
   Switch,
   FormControl,
   InputLabel,
@@ -34,19 +34,23 @@ const Filters = () => {
 
   return (
     <Fragment>
-      <Box
-        p={3}
-        sx={{
-          "& .MuiTextField-root": { m: 1 },
-        }}
-      >
-        <LinkButton to="/create-invoice">Create Invoice</LinkButton>
-        <LinkButton to="/recive-invoice">Receive Money</LinkButton>
-        <FormControlLabel
-          label=" Paid/ Unpaid"
-          control={<Switch checked={paid} onChange={() => setPaid(paid)} />}
-        />
-        <Box mt={2}>
+      <Grid container>
+        <Grid
+          spacing={2}
+          item
+          lg={12}
+          direction="Row"
+          sx={{
+            "& .MuiTextField-root": { m: 1 },
+            "& .MuiFormControl-root": { m: 1, width: "10rem" },
+          }}
+        >
+          <LinkButton to="/create-invoice">Create Invoice</LinkButton>
+          <LinkButton to="/recive-invoice">Receive Money</LinkButton>
+          <FormControlLabel
+            label=" Paid/ Unpaid"
+            control={<Switch checked={paid} onChange={() => setPaid(paid)} />}
+          />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -56,87 +60,93 @@ const Filters = () => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-        </Box>
-        <FormControl sx={{ width: "8rem", m: 2 }}>
-          <InputLabel id="demo-simple-select-label">All Invoice</InputLabel>
-          <Select
-            size="small"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: "8rem", m: 2 }}>
-          <InputLabel id="demo-simple-select-label">Bill Date</InputLabel>
-          <Select
-            size="small"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: "8rem", m: 2 }}>
-          <InputLabel id="demo-simple-select-label">All Times</InputLabel>
-          <Select
-            size="small"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-        <Typography component="span" variant="h8" sx={{ width: "8rem", m: 2 }}>
-          Status:
-        </Typography>
 
-        <FormControl sx={{ width: "8rem", m: 2 }}>
-          <InputLabel id="demo-simple-select-label">Any </InputLabel>
-          <Select
-            size="small"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">All Invoice</InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">Bill Date</InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">All Times</InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+
+          <Typography
+            component="span"
+            variant="caption"
+            sx={{ width: "8rem", m: 2, fontSize: "1.2rem" }}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: "8rem", m: 2 }}>
-          <InputLabel id="demo-simple-select-label">Dropd-own</InputLabel>
-          <Select
-            size="small"
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+            Status:
+          </Typography>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">Any </InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">Dropd-own</InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
     </Fragment>
   );
 };

@@ -20,12 +20,12 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import SaveIcon from "@mui/icons-material/Save";
 import { LocalizationProvider, TimePicker, DatePicker } from "@mui/lab";
 import { useToggle } from "../../context/useToggle";
-import { ActionAlerts, GetTime, GetDate } from "../../utils/ActionAlerts";
+import { ActionAlerts, GetDate } from "../../utils/ActionAlerts";
+import NumberFormat from "react-number-format";
 
 const Time = () => {
-  const [pickTime, setPickTime] = useState(new Date("2021-12-01T21:00:00"));
   const [pickDate, setPickDate] = useState(new Date("2021-12-01T21:11:54"));
-  const [timeToggle, setTimeToggle] = useToggle(false);
+  const [timeToggle, setTimeToggle] = useToggle(true);
   const [billable, setBillable] = useToggle(false);
 
   // const [bill, setBill] = useToggle(false);
@@ -34,6 +34,7 @@ const Time = () => {
     matter_name: 0,
     category: "",
     sub_category: "",
+    time: "",
     hard: false,
     soft: false,
     unit: 0,
@@ -53,6 +54,7 @@ const Time = () => {
     hard,
     soft,
     unit,
+    time,
     qty,
     rate,
     file,
@@ -66,7 +68,7 @@ const Time = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let time = GetTime(pickTime);
+
     let date = GetDate(pickDate);
 
     const body = JSON.stringify({
@@ -98,18 +100,18 @@ const Time = () => {
   };
   return (
     <Fragment>
-      <Box
-        component="form"
-        Validate
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "15rem" },
-        }}
-        onSubmit={(e) => onSubmit(e)}
-      >
+      <Box component="form" Validate onSubmit={(e) => onSubmit(e)}>
         <Typography component="h3" variant="h4">
           Time
         </Typography>
-        <Grid container spacing={2} mt={2}>
+        <Grid
+          container
+          spacing={2}
+          mt={2}
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "15rem" },
+          }}
+        >
           <Grid item xs={12}>
             <Grid container p={3}>
               <Grid item xs={6}>
@@ -178,7 +180,6 @@ const Time = () => {
                 />
               </Grid>
             </Grid>
-
             <TextField
               size="small"
               margin="normal"
@@ -246,24 +247,26 @@ const Time = () => {
                 </Box>
               </Fragment>
             )}
-
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <TimePicker
-                label="Pick Time"
-                name="picktime"
-                id="picktime"
-                value={pickTime}
-                onChange={(e) => {
-                  setPickTime(e);
-                }}
-                renderInput={(params) => <TextField size="small" {...params} />}
-              />
-            </LocalizationProvider>
+            <NumberFormat
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              placeholder="HH:MM"
+              mask={["H", "H", "M", "M"]}
+              format="##/##"
+              customInput={TextField}
+              label="Time"
+              name="time"
+              id="time"
+              value={time}
+              type="text"
+              onValueChange={(value) => onChange(value)}
+            />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 inputFormat="yyyy-MM-dd"
                 mask="____-__-__"
-                label="Pick Date"
+                label="Date"
                 value={pickDate}
                 name="pickdate"
                 id="pickdate"
@@ -309,16 +312,21 @@ const Time = () => {
               }
             />
             <br />
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item lg={12}>
             <TextField
               fullWidth
-              size="small"
+              multiline
               margin="normal"
               variant="outlined"
               name="note"
               rows={4}
-              label="note"
+              // label="note"
               type="text"
               onChange={(e) => onChange(e)}
+              placeholder="Private / internal notes"
               id="note"
               autoComplete="note"
             />

@@ -3,7 +3,7 @@
 import React, { Fragment } from "react";
 import DashBoard from "../Client/DashBoard";
 import InvoiceList from "../../Invoice/InvoiceList";
-import LedgerActivity from "../../Legder/LedgerActivity";
+import LedgerActivity from "../../Ledger/LedgerActivity";
 import Profile from "../../Profile/Profile";
 import Templates from "../../Template/Templates";
 import Tabs from "../../Tabs/Tabs";

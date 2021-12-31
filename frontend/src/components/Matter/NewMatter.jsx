@@ -120,7 +120,7 @@ const NewMatter = () => {
           Create New Matter
         </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={8}>
+          <Grid item lg={8}>
             <TextField
               size="small"
               margin="normal"
@@ -237,7 +237,7 @@ const NewMatter = () => {
               }}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item lg={4}>
             <TextField
               size="small"
               fullWidth
@@ -294,7 +294,7 @@ const NewMatter = () => {
             />
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item lg={4}>
             <br />
             <Typography component="h5" variant="h6">
               Legal Concerns
@@ -337,7 +337,7 @@ const NewMatter = () => {
               id="opposing_counsel"
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item lg={4}>
             <Typography component="h5" variant="h6" sx={{ fontSize: "1rem" }}>
               Event Detail
             </Typography>
@@ -392,7 +392,7 @@ const NewMatter = () => {
               id="witnesses"
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item lg={4}>
             <TextField
               size="small"
               fullWidth

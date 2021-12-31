@@ -7,13 +7,8 @@ import { LinkButton } from "../../styles/styles";
 const LedgerDoc = () => {
   return (
     <Fragment>
-      <Box p={3}>
-        <LinkButton to="/ledgers" sx={{ float: "right" }}>
-          Ledger Dashboard
-        </LinkButton>
-      </Box>
       <Grid container spacing={1}>
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Box
             sx={{
               height: "80%",
@@ -26,7 +21,7 @@ const LedgerDoc = () => {
             MS Word Document On Pleading or Non Pleading Paper
           </Box>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Box
             sx={{
               height: "80%",
@@ -39,9 +34,9 @@ const LedgerDoc = () => {
             Space for 2nd Document to be opend if user wants it
           </Box>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Grid container>
-            <Grid item xs={12}>
+            <Grid item lg={12}>
               <Box component={Paper} p={2} sx={{ borderRadius: "1rem" }}>
                 <Typography mt={2}>Related Document</Typography>
                 <Typography mt={2}>Related Document</Typography>
@@ -49,7 +44,7 @@ const LedgerDoc = () => {
                 <Typography mt={2}>Related Document</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item lg={12}>
               <Box component={Paper} mt={2} p={2} sx={{ borderRadius: "1rem" }}>
                 <TextField
                   fullWidth

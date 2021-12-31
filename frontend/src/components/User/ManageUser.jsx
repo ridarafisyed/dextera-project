@@ -53,9 +53,6 @@ const ManageUser = () => {
           Manage Users
         </Typography>
         <Stack p={3} direction="row" spacing={2} sx={{ float: "right" }}>
-          {/* <LinkButton to="/create-user">Create User</LinkButton>
-          <LinkButton to="/user-group">Manage User Group</LinkButton>
-          <LinkButton to="/user-role">Manage User Role</LinkButton> */}
           <Search sx={{ width: "15rem" }}>
             <SearchIconWrapper>
               <SearchIcon />

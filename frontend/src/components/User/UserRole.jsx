@@ -3,18 +3,10 @@ import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import {
   Button,
-  Box,
   List,
-  Table,
   Grid,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableBody,
   ListItem,
   ListItemText,
-  Typography,
   Dialog,
   DialogActions,
   DialogContent,
@@ -22,11 +14,10 @@ import {
   TextField,
 } from "@mui/material";
 
-import ClearIcon from "@mui/icons-material/Clear";
 import { ActionAlerts } from "../../utils/ActionAlerts";
-import { LinkButton } from "../../styles/styles";
 
 import { CONFIG } from "../../api/MatterApi";
+import RoleFuncions from "./RoleFuncions";
 
 const UserRole = () => {
   const [category, setCategory] = useState([]);
@@ -36,7 +27,21 @@ const UserRole = () => {
   const [formData, setFormData] = useState({
     name: "",
   });
+  const [role, setRole] = useState("");
 
+  const roles = [
+    "Principal ",
+    "Partner ",
+    "Director ",
+    "Accounting ",
+    "Manager",
+    "Sr. Attorney ",
+    "Jr. Attorney",
+    "Paralegal ",
+    "Assistant ",
+    "Adminitrator ",
+    "IT ",
+  ];
   const { name } = formData;
 
   const onChange = (e) =>
@@ -84,18 +89,18 @@ const UserRole = () => {
     FetchData();
     FetchUserData();
   }, []);
-  const handleDelete = (id) => {
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/roles/${id}/`, CONFIG)
-      .then((res) => {
-        FetchData();
-        return (
-          <ActionAlerts
-            value={{ status: res.statusText, message: "Success" }}
-          />
-        );
-      });
-  };
+  // const handleDelete = (id) => {
+  //   axios
+  //     .delete(`${process.env.REACT_APP_API_URL}/api/roles/${id}/`, CONFIG)
+  //     .then((res) => {
+  //       FetchData();
+  //       return (
+  //         <ActionAlerts
+  //           value={{ status: res.statusText, message: "Success" }}
+  //         />
+  //       );
+  //     });
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = JSON.stringify({ name });
@@ -120,15 +125,9 @@ const UserRole = () => {
   };
   return (
     <Fragment>
-      <Grid container>
-        <Grid item xs={12}>
-          <Box p={3} sx={{ float: "right" }}>
-            <LinkButton to="/users">Manage User</LinkButton>
-            <LinkButton to="/create-user">Create User</LinkButton>
-            <LinkButton to="/user-group">Manage Group</LinkButton>
-          </Box>
-        </Grid>
-        <Grid item xs={3}>
+      <Grid container spacing={2}>
+        <Grid item lg={12}></Grid>
+        <Grid item lg={2}>
           <Button
             variant="contained"
             onClick={handleClickOpen}
@@ -172,7 +171,27 @@ const UserRole = () => {
               </Button>
             </DialogActions>
           </Dialog>
-          {!loading ? (
+          {roles.map((data) => (
+            <List>
+              <ListItem disablePadding>
+                <ListItemText>
+                  <Button onClick={() => setRole({ data })}>{data} </Button>{" "}
+                </ListItemText>
+                {/* <Button
+                  variant="contained"
+                  value={data}
+                  onClick={() => handleDelete(data)}
+                  sx={{
+                    borderRadius: "0.5rem",
+                    float: "right",
+                  }}
+                >
+                  <ClearIcon />
+                </Button> */}
+              </ListItem>
+            </List>
+          ))}
+          {/* {!loading ? (
             category.map((data) => (
               <Box mt={1}>
                 <List>
@@ -195,35 +214,10 @@ const UserRole = () => {
             ))
           ) : (
             <Typography>Loading ...</Typography>
-          )}
+          )} */}
         </Grid>
-        <Grid item xs={8}>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell>Role</TableCell>
-                  <TableCell>Group</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {loadingUser
-                  ? null
-                  : userData?.map((data) => {
-                      return (
-                        <TableRow>
-                          <TableCell>{data.f_name}</TableCell>
-                          <TableCell>{data.l_name}</TableCell>
-                          <TableCell>{data.role}</TableCell>
-                          <TableCell>{data.group}</TableCell>
-                        </TableRow>
-                      );
-                    })}
-              </TableBody>
-            </Table>
-          </TableContainer>
+        <Grid item lg={10}>
+          <RoleFuncions data={role} />
         </Grid>
       </Grid>
     </Fragment>

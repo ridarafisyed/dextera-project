@@ -18,6 +18,9 @@ import {
   TableRow,
   TableBody,
   TableCell,
+  MenuItem,
+  InputLabel,
+  Select,
   Button,
 } from "@mui/material";
 
@@ -41,17 +44,17 @@ const PaymentPlan = () => {
   return (
     <Fragment>
       <Grid container mt={3} mb={3}>
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Typography>Start Balance:</Typography>
           <Typography>Start Date:</Typography>
           <Typography>Interest Rate:</Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Typography>Payment Amout:</Typography>
           <Typography>Payment Date:</Typography>
           <Typography>No Payments:</Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Typography>Payment Remaining:</Typography>
           <Typography>Last Payment:</Typography>
           <Typography>Last Payment $:</Typography>
@@ -95,7 +98,15 @@ const PaymentPlan = () => {
         }}
       >
         Close
-      </Button>{" "}
+      </Button>
+      <Grid container>
+        <Grid item lg={6}>
+          <Typography>Post agreement Balance:</Typography>
+        </Grid>
+        <Grid item lg={6}>
+          <Typography>Start Date:</Typography>
+        </Grid>
+      </Grid>
     </Fragment>
   );
 };
@@ -171,16 +182,16 @@ const Payment = () => {
     payment_method: "",
   });
 
-  // const {
-  //   payment_type,
-  //   date,
-  //   retainer,
-  //   payment,
-  //   date_range,
-  //   menu,
-  //   bank_account,
-  //   payment_method,
-  // } = invoiceData;
+  const {
+    payment_type,
+    date,
+    retainer,
+    payment,
+    date_range,
+    menu,
+    bank_account,
+    payment_method,
+  } = invoiceData;
   const onChange = (e) =>
     setInvoiceData({ ...invoiceData, [e.target.name]: e.target.value });
 
@@ -190,7 +201,7 @@ const Payment = () => {
   return (
     <Fragment>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item lg={12}>
           <Box
             component="form"
             Validate
@@ -246,7 +257,7 @@ const Payment = () => {
               control={<Checkbox />}
               label="Payment"
             />
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Typography sx={{ mt: 2, mb: 1 }}> Date Range </Typography>
               <DateRangePicker
                 calendars={1}
@@ -262,7 +273,21 @@ const Payment = () => {
                   </Fragment>
                 )}
               />
-            </LocalizationProvider>
+            </LocalizationProvider> */}
+            <FormControl sx={{ width: "12rem" }}>
+              <InputLabel id="demo-simple-select-label">Date Range</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={date_range}
+                label="Age"
+                onChange={(e) => onChange(e)}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
             <TextField
               size="small"
               margin="normal"
@@ -320,7 +345,7 @@ const Payment = () => {
             </FormControl>
           </Box>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item lg={12}>
           <TableContainer>
             {isPlan ? <PaymentPlan /> : <InvoicePayment />}
           </TableContainer>

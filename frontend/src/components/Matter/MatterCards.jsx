@@ -9,7 +9,7 @@ const MatterCards = () => {
   return (
     <Fragment>
       <Grid container spacing={2} mt={1.5}>
-        <Grid item xs={9}>
+        <Grid item lg={9}>
           <Grid container spacing={2}>
             <Grid item>
               <Card
@@ -21,7 +21,7 @@ const MatterCards = () => {
                 }}
               >
                 <Grid container p={2}>
-                  <Grid item xs={8}>
+                  <Grid item lg={8}>
                     <Typography
                       component="span"
                       sx={{ fontSize: 14 }}
@@ -30,7 +30,7 @@ const MatterCards = () => {
                       Urgent
                     </Typography>
                   </Grid>
-                  <Grid item xs={4} sx={{ textAlign: "right" }}>
+                  <Grid item lg={4} sx={{ textAlign: "right" }}>
                     <Typography variant="h5" component="h6">
                       0
                     </Typography>
@@ -48,7 +48,7 @@ const MatterCards = () => {
                 }}
               >
                 <Grid container p={2}>
-                  <Grid item xs={8}>
+                  <Grid item lg={8}>
                     <Typography
                       component="span"
                       sx={{ fontSize: 14 }}
@@ -57,7 +57,7 @@ const MatterCards = () => {
                       Concern
                     </Typography>
                   </Grid>
-                  <Grid item xs={4} sx={{ textAlign: "right" }}>
+                  <Grid item lg={4} sx={{ textAlign: "right" }}>
                     <Typography variant="h5" component="h6">
                       0
                     </Typography>
@@ -75,7 +75,7 @@ const MatterCards = () => {
                 }}
               >
                 <Grid container p={2}>
-                  <Grid item xs={8}>
+                  <Grid item lg={8}>
                     <Typography
                       component="span"
                       sx={{ fontSize: 14 }}
@@ -84,7 +84,7 @@ const MatterCards = () => {
                       Start
                     </Typography>
                   </Grid>
-                  <Grid item xs={4} sx={{ textAlign: "right" }}>
+                  <Grid item lg={4} sx={{ textAlign: "right" }}>
                     <Typography variant="h5" component="h6">
                       0
                     </Typography>
@@ -102,7 +102,7 @@ const MatterCards = () => {
                 }}
               >
                 <Grid container p={2}>
-                  <Grid item xs={8}>
+                  <Grid item lg={8}>
                     <Typography
                       component="span"
                       sx={{ fontSize: 14 }}
@@ -111,7 +111,7 @@ const MatterCards = () => {
                       New
                     </Typography>
                   </Grid>
-                  <Grid item xs={4} sx={{ textAlign: "right" }}>
+                  <Grid item lg={4} sx={{ textAlign: "right" }}>
                     <Typography variant="h5" component="h6">
                       0
                     </Typography>
@@ -121,7 +121,7 @@ const MatterCards = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item lg={3}>
           <Button
             variant="outlined"
             sx={{

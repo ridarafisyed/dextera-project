@@ -10,9 +10,7 @@ import {
   MoneyOff,
   FileCopy,
   Receipt,
-  HourglassBottom,
   AssignmentTurnedIn,
-  Map,
   AddCircle,
   Work,
   Person,
@@ -71,7 +69,7 @@ const Sidebar = () => {
         <Box>
           <SideBarBtn variant="outlined">
             <Grid>
-              <Box component={Link} to="/dashboard">
+              <Box component={Link} to="/">
                 <Grid item>
                   <AddCircle fontSize="medium" />
                 </Grid>
@@ -86,16 +84,6 @@ const Sidebar = () => {
                   <Receipt fontSize="medium" />
                 </Grid>
                 <Grid item>Invoices</Grid>
-              </Box>
-            </Grid>
-          </SideBarBtn>
-          <SideBarBtn variant="outlined">
-            <Grid>
-              <Box component={Link} to="/Profile">
-                <Grid item>
-                  <Map fontSize="medium" />
-                </Grid>
-                <Grid item>Profile</Grid>
               </Box>
             </Grid>
           </SideBarBtn>
@@ -135,7 +123,7 @@ const Sidebar = () => {
                 <Grid item>
                   <Task fontSize="medium" />
                 </Grid>
-                <Grid item>New Task</Grid>
+                <Grid item>Manage Task</Grid>
               </Box>
             </Grid>
           </SideBarBtn>
@@ -145,7 +133,7 @@ const Sidebar = () => {
                 <Grid item>
                   <Work fontSize="medium" />
                 </Grid>
-                <Grid item>Job Search</Grid>
+                <Grid item>Employee Search</Grid>
               </Box>
             </Grid>
           </SideBarBtn>
@@ -155,37 +143,7 @@ const Sidebar = () => {
                 <Grid item>
                   <AssignmentTurnedIn fontSize="medium" />
                 </Grid>
-                <Grid item>Matters Dashboard</Grid>
-              </Box>
-            </Grid>
-          </SideBarBtn>
-          <SideBarBtn variant="outlined">
-            <Grid>
-              <Box component={Link} to="/matters">
-                <Grid item>
-                  <AssignmentTurnedIn fontSize="medium" />
-                </Grid>
                 <Grid item>Matters</Grid>
-              </Box>
-            </Grid>
-          </SideBarBtn>
-          <SideBarBtn variant="outlined">
-            <Grid>
-              <Box component={Link} to="/matter-detail">
-                <Grid item>
-                  <AssignmentTurnedIn fontSize="medium" />
-                </Grid>
-                <Grid item>Matter Detail</Grid>
-              </Box>
-            </Grid>
-          </SideBarBtn>
-          <SideBarBtn variant="outlined">
-            <Grid>
-              <Box component={Link} to="/create-matter">
-                <Grid item>
-                  <AssignmentTurnedIn fontSize="medium" />
-                </Grid>
-                <Grid item>New Matter</Grid>
               </Box>
             </Grid>
           </SideBarBtn>

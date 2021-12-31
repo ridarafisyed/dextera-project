@@ -44,9 +44,6 @@ const LedgerTImeList = () => {
   return (
     <Fragment>
       <Box>
-        <Typography component="h4" variant="h5" mb={2}>
-          Ledgers Time list
-        </Typography>
         <Button
           variant="contained"
           sx={{ marginRight: "1rem", float: "right" }}
@@ -59,12 +56,7 @@ const LedgerTImeList = () => {
         >
           Export
         </Button>
-        <LinkButton to="/time" sx={{ float: "right" }}>
-          + Add Time
-        </LinkButton>
-        <LinkButton to="/time-list" sx={{ float: "right" }}>
-          + Time List
-        </LinkButton>
+
         <TableContainer>
           <Table>
             <TableHead>

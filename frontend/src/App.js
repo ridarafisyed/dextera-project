@@ -27,31 +27,33 @@ import ResetPasswordConfirm from "./containers/Auth/ResetPasswordConfirm";
 import Profile from "./components/Profile/Profile";
 import Company from "./components/Profile/Company";
 
-import MatterDashboard from "./containers/Matters/MatterDashboard";
+import Matter from "./components/Matter";
+
 import Matters from "./containers/Matters/Matters";
 import MatterDetail from "./components/Matter/MatterDetail";
 import NewMatter from "./components/Matter/NewMatter";
 
-import Invoice from "./containers/Invoice/Invoice";
+import Invoice from "./components/Invoice";
+// import Invoice from "./containers/Invoice/Invoice";
 import CreateInvoice from "./components/Invoice/CreateInvoice";
 
 import Payment from "./components/Invoice/Payment";
 import ManageCategory from "./components/Category/ManageCategory";
 
 import CreateUser from "./components/User/CreateUser";
-import ManageUser from "./components/User/ManageUser";
-import ManageUserGroup from "./components/User/ManageUserGroup";
-import UserRole from "./components/User/UserRole";
+import User from "./components/User";
 
-import Time from "./components/Legder/Time";
-import TimeList from "./components/Legder/TimeList";
+import Time from "./components/Ledger/Time";
+import TimeList from "./components/Ledger/TimeList";
 
-import LedgerTImeList from "./components/Legder/LedgerTImeList";
-import LedgerActivity from "./components/Legder/LedgerActivity";
-import LegderDashbard from "./components/Legder/LegderDashbard";
+import Ledger from "./components/Ledger";
+
+import LedgerTImeList from "./components/Ledger/LedgerTImeList";
+import LedgerActivity from "./components/Ledger/LedgerActivity";
+import LedgerDashbard from "./components/Ledger/LedgerDashbard";
 import CreateTask from "./components/Tasks/CreateTask";
 import ViewTasks from "./components/Tasks/ViewTasks";
-import LedgerDoc from "./components/Legder/LedgerDoc";
+import LedgerDoc from "./components/Ledger/LedgerDoc";
 import Search from "./components/Job/Ssearch";
 import Result from "./components/Job/Result";
 import JobView from "./components/Job/JobView";
@@ -84,7 +86,7 @@ const App = () => (
               <Route path="/profile" component={Profile} />
               <Route path="/company-detail" component={Company} />
 
-              <Route path="/matter-dashboard" component={MatterDashboard} />
+              <Route path="/matter-dashboard" component={Matter} />
               <Route path="/matters" component={Matters} />
               <Route path="/matter-detail" component={MatterDetail} />
               <Route path="/create-matter" component={NewMatter} />
@@ -94,15 +96,13 @@ const App = () => (
               <Route path="/recive-invoice" component={Payment} />
 
               <Route path="/create-user" component={CreateUser} />
-              <Route path="/users" component={ManageUser} />
-              <Route path="/user-group" component={ManageUserGroup} />
-              <Route path="/user-role" component={UserRole} />
+              <Route path="/users" component={User} />
 
               <Route path="/manage-categories" component={ManageCategory} />
               <Route path="/ledger-documents" component={LedgerDoc} />
               <Route path="/time" component={Time} />
               <Route path="/time-list" component={TimeList} />
-              <Route path="/ledgers" component={LegderDashbard} />
+              <Route path="/ledgers" component={Ledger} />
               <Route path="/ledger-list" component={LedgerTImeList} />
               <Route path="/activity-list" component={LedgerActivity} />
 

@@ -20,16 +20,32 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Stack,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
+import {
+  LinkButton,
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "../../styles/styles";
+import SearchIcon from "@mui/icons-material/Search";
 
 import ClearIcon from "@mui/icons-material/Clear";
 import { ActionAlerts } from "../../utils/ActionAlerts";
-import { LinkButton } from "../../styles/styles";
 
 import { CONFIG } from "../../api/MatterApi";
 
 const ManageUserGroup = () => {
+  const [filter, setFilter] = useState("");
+
+  const handleChange = (event) => {
+    setFilter(event.target.value);
+  };
   const [group, setGroup] = useState([]);
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -116,15 +132,57 @@ const ManageUserGroup = () => {
   };
   return (
     <Fragment>
-      <Grid container>
-        <Grid item xs={12}>
-          <Box p={3} sx={{ float: "right" }}>
-            <LinkButton to="/users">Manage User</LinkButton>
-            <LinkButton to="/create-user">Create User</LinkButton>
-            <LinkButton to="/user-role">Manage Role</LinkButton>
-          </Box>
+      <Grid container spacing={2}>
+        <Grid item lg={12}>
+          <Grid container spacing={2} direction="row">
+            <Grid item lg={3}>
+              <Typography variant="h5" component="h5" m={1} color="primary">
+                Manage Group
+              </Typography>
+            </Grid>
+            <Grid item lg={9}>
+              <Stack direction="row" sx={{ float: "right" }}>
+                <Typography m={2} component="span" color="primary">
+                  Filter & Sort By
+                </Typography>
+                <FormControl sx={{ width: "10rem", height: "2.5rem" }}>
+                  <InputLabel id="demo-simple-select-label" color="primary">
+                    Custom Sort
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={filter}
+                    label="Age"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="name">By Name</MenuItem>
+                    <MenuItem value="role">By Role</MenuItem>
+                    <MenuItem value="gorup">By Group</MenuItem>
+                  </Select>
+                </FormControl>
+                <Search sx={{ width: "20rem", height: "2.5rem", m: 1 }}>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </Search>
+              </Stack>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item lg={3}>
+          <Typography
+            variant="h5"
+            component="h5"
+            color="primary"
+            align="center"
+          >
+            Groups
+          </Typography>
           <Button
             variant="contained"
             onClick={handleClickOpen}
@@ -193,15 +251,23 @@ const ManageUserGroup = () => {
             <Typography>Loading ...</Typography>
           )}
         </Grid>
-        <Grid item xs={8}>
+        <Grid item lg={9}>
           <TableContainer>
-            <Table>
+            <Table size="small">
               <TableHead>
-                <TableRow>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell>Role</TableCell>
-                  <TableCell>Group</TableCell>
+                <TableRow bgColor="#796ef0">
+                  <TableCell>
+                    <Typography color="white">First Name</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography color="white">Last Name</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography color="white">Role</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography color="white">Group</Typography>
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -220,6 +286,13 @@ const ManageUserGroup = () => {
               </TableBody>
             </Table>
           </TableContainer>
+        </Grid>
+        <Grid item lg={12}>
+          <Box sx={{ float: "right" }}>
+            <Button variant="contained" color="success" sx={{ color: "white" }}>
+              Done
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Fragment>
